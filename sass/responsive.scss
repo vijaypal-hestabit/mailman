@@ -1,0 +1,57 @@
+@media screen and (max-width : 992px) {
+    .grid {
+        grid-template-columns: auto !important;
+        row-gap: 10px;
+    }
+
+    .register_wrapper .register_body .register_pass input[type=password] {
+        width: 90% !important;
+    }
+    .image_section{
+        grid-template-columns: auto auto!important;
+    }
+}
+
+@media screen and (max-width : 576px) {
+    .sign_in {
+        margin-right: 0px !important;
+    }
+
+    .sm-hide {
+        display: none;
+    }
+
+    // for register page
+    .register_body {
+        .image_section {
+            grid-template-columns: auto !important;
+
+            >div:nth-child(1) {
+                order: 2;
+            }
+
+            >div:nth-child(2) {
+                order: 1;
+            }
+        }
+    }
+
+    // for dashboard page
+    nav>div>.grid {
+        grid-template-columns: auto auto !important;
+        column-gap: 8px !important;
+
+        .navlogo {
+            display: none !important;
+        }
+
+        .user_profile {
+            grid-template-columns: auto !important;
+            .user_name{
+                display: none !important;
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,86 @@
+$create_btn_color: #0d6efd !important;
+$theme_color : #3a3a3a;
+
+header {
+    background: #fff;
+    position: sticky;
+    width: 100%;
+    z-index: 9999;
+    -webkit-box-shadow: 0px 0px 8px rgb(0 0 0 / 40%);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, .4);
+    -ms-box-shadow: 0px 0px 8px rgba(0, 0, 0, .4);
+    -o-box-shadow: 0px 0px 8px rgba(0, 0, 0, .4);
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 40%);
+
+    nav {
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            .sign_in {
+                margin-right: 10px;
+            }
+
+            .sign_up {
+                background-color: $create_btn_color;
+            }
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 30px;
+        margin-top: 50px;
+        text-align: center;
+    }
+}
+
+
+
+
+/*-----------------------------------------for login signup forgot--------------------------------------*/
+
+
+.main .grid {
+    grid-template-columns: 50% 50%;
+
+    .login_section {
+        border: 3px solid $theme_color;
+        border-radius: 5px;
+        padding: 15px;
+        text-align: left;
+
+        .login_content {
+            margin-left: 15px;
+
+            .login_shadow {
+                border: 3px solid $theme_color;
+                box-shadow: 4px 4px $theme_color !important;
+            }
+
+            .create_shadow {
+                border: 3px solid $create_btn_color;
+                box-shadow: 3px 3px $create_btn_color;
+            }
+        }
+    }
+}
+
+// .forgot_logo{
+//     text-align: left;
+// }
+.forgot_section {
+    text-align: left;
+
+    .forgot_content {
+
+        // margin-left: 15px;
+        .forgot_shadow {
+            border: 3px solid $theme_color;
+            box-shadow: 4px 4px $theme_color !important;
+        }
+    }
+}

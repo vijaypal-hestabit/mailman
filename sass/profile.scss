@@ -1,0 +1,34 @@
+$create_btn_color: #0d6efd !important;
+$theme_color : #3a3a3a;
+
+.profile .grid {
+    grid-template-columns: 50% 50%;
+    column-gap: 30px;
+
+    .profile_section {
+        border: 3px solid $theme_color;
+        border-radius: 5px;
+        padding: 15px;
+        text-align: left;
+
+        .profile_content {
+            margin-left: 15px;
+
+            .profile_shadow {
+                border: 3px solid $theme_color;
+                box-shadow: 4px 4px $theme_color !important;
+            }
+
+            .create_shadow {
+                border: 3px solid $create_btn_color;
+                box-shadow: 3px 3px $create_btn_color;
+            }
+        }
+    }
+    .edit_profile{
+        img{
+            max-width: 400px !important;
+        }
+    }
+}
+

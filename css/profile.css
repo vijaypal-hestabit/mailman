@@ -1,0 +1,24 @@
+.profile .grid {
+  grid-template-columns: 50% 50%;
+  column-gap: 30px;
+}
+.profile .grid .profile_section {
+  border: 3px solid #3a3a3a;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: left;
+}
+.profile .grid .profile_section .profile_content {
+  margin-left: 15px;
+}
+.profile .grid .profile_section .profile_content .profile_shadow {
+  border: 3px solid #3a3a3a;
+  box-shadow: 4px 4px #3a3a3a !important;
+}
+.profile .grid .profile_section .profile_content .create_shadow {
+  border: 3px solid #0d6efd !important;
+  box-shadow: 3px 3px #0d6efd !important;
+}
+.profile .grid .edit_profile img {
+  max-width: 400px !important;
+}/*# sourceMappingURL=profile.css.map */

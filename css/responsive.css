@@ -1,0 +1,47 @@
+@media screen and (max-width: 992px) {
+  .grid {
+    grid-template-columns: auto !important;
+    row-gap: 10px;
+  }
+
+  .register_wrapper .register_body .register_pass input[type=password] {
+    width: 90% !important;
+  }
+
+  .image_section {
+    grid-template-columns: auto auto !important;
+  }
+}
+@media screen and (max-width: 576px) {
+  .sign_in {
+    margin-right: 0px !important;
+  }
+
+  .sm-hide {
+    display: none;
+  }
+
+  .register_body .image_section {
+    grid-template-columns: auto !important;
+  }
+  .register_body .image_section > div:nth-child(1) {
+    order: 2;
+  }
+  .register_body .image_section > div:nth-child(2) {
+    order: 1;
+  }
+
+  nav > div > .grid {
+    grid-template-columns: auto auto !important;
+    column-gap: 8px !important;
+  }
+  nav > div > .grid .navlogo {
+    display: none !important;
+  }
+  nav > div > .grid .user_profile {
+    grid-template-columns: auto !important;
+  }
+  nav > div > .grid .user_profile .user_name {
+    display: none !important;
+  }
+}/*# sourceMappingURL=responsive.css.map */

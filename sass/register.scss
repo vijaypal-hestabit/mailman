@@ -1,0 +1,67 @@
+$create_btn_color: #0d6efd !important;
+$theme_color : #3a3a3a;
+
+.register_wrapper {
+    border: 3px solid $theme_color;
+    border-radius: 5px;
+    padding: 25px;
+    .register_body {
+
+        .grid {
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            .register_item4 {
+                text-align: center;
+
+                img {
+                    width: 150px;
+                }
+
+                .custom-file-input::-webkit-file-upload-button {
+                    // visibility: hidden;
+                    display: none;
+                }
+
+                .custom-file-input::before {
+                    margin-top: 10px;
+                    content: 'Upload Picture';
+                    display: inline-block;
+                    color: blue;
+                    outline: none;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                .custom-file-input:hover::before {
+                    border-color: black;
+                }
+
+            }
+
+            .mail_sufix {
+                margin: auto 5px;
+            }
+        }
+
+        .register_pass {
+            input[type=password] {
+                width: 95%;
+            }
+
+            .fa {
+                font-size: 25px;
+            }
+        }
+        .register_shadow{
+            border: 3px solid $theme_color;
+            box-shadow: 4px 4px $theme_color!important;
+        }
+        #signup_success{
+            color: green;
+            margin-top: 20px;
+        }
+    }
+
+}
