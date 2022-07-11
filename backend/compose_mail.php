@@ -109,7 +109,7 @@ class compose extends CommonFunctions
     function save_attachment($file, $user_id, $inbox_id)
     {
         $ob = new ComposeEmailController();
-        $dir = $_SERVER['DOCUMENT_ROOT'] . '/hbmail/images/mail_attachments/';
+        $dir = $_SERVER['HTTP_HOST'] . '/hbmail/images/mail_attachments/';
         $path = $this->saveFiles($dir, $file);
         $ob->save_attachment($path, $user_id, $inbox_id);
     }
