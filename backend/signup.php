@@ -17,7 +17,7 @@ class register extends CommonFunctions
         // var_dump($profile_img);
         // die;
         // $dir = $_SERVER['HTTP_ORIGIN'].'/hbmail/images/';
-        $dir = $_SERVER['HTTP_HOST'] . '/hbmail/images/profile_pic/';
+        $dir = '../images/profile_pic/';
         $this->saveFiles($dir, $profile_img);
 
         $fname = ($_POST['f_name']);
