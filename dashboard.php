@@ -41,11 +41,11 @@ if (isset($_SESSION['user_id'])) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="mail_content" v-for="(item,index) in inbox_contents" :class="item.is_read=='0'?'unread':'read'" :data_id="item.id" @click="navigate(item.id)">
+                                    <tr class="mail_content" v-for="(item,index) in inbox_contents" :class="item.is_read=='0'?'unread':'read'" :data_id="item.id">
                                         <td><input type="checkbox" name="action" class="checkboxs" :value="item.id" @change="single_select"></td>
-                                        <td>{{ user_records[item.sender_id] }}</td>
-                                        <td>{{ item.short_subject_msg }}</td>
-                                        <td>{{ item.delivered_date }}</td>
+                                        <td @click="navigate(item.id)" class="cursor-pointer">{{ user_records[item.sender_id] }}</td>
+                                        <td @click="navigate(item.id)" class="cursor-pointer">{{ item.short_subject_msg }}</td>
+                                        <td @click="navigate(item.id)" class="cursor-pointer">{{ item.delivered_date }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -114,10 +114,6 @@ if (isset($_SESSION['user_id'])) {
                         </div>
                     </fieldset>
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
             </div>
         </div>
     </div>
@@ -588,7 +584,6 @@ if (isset($_SESSION['user_id'])) {
 
         $(document).on("click", "td", function() {
             var message_id = $(this).closest('tr').attr('data_id');
-            console.log(message_id);
         });
         $('#composeModal').on('hidden.bs.modal', function() {
             location.reload()

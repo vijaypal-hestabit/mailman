@@ -4,7 +4,7 @@ if (isset($_SESSION['user_id'])) {
 
     include_once 'dashboard_header.php';
 ?>
-
+    <!-- show mail details -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
         <div id="show_mail">
             <h2>Subject :- <span id="subject"></span></h2>
@@ -41,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
 
-
+    <!-- modal for compose mail-->
     <div class="modal fade" id="composeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -51,7 +51,6 @@ if (isset($_SESSION['user_id'])) {
                 </div>
                 <div class="modal-body" id="compose_email">
                     <fieldset class="form-group float-right w-100 border p-2">
-                        <!-- <legend>Compose</legend> -->
                         <label class="form-control border-0" for="mail_id">
                             <input type="email" class="form-control" name="" id="mail_id" placeholder="To" v-model="mail" @change="make_draft">
                         </label>
@@ -111,30 +110,26 @@ if (isset($_SESSION['user_id'])) {
             'mail_id': mail_id
         };
         axios.post('backend/mail_details.php', data).then(res => {
-            console.log(res.data.attachments)
 
+            // mail details
             $("#subject").html(res.data.message_data[0]['short_subject_msg'])
             $(".show_date").html(res.data.message_data[0]['delivered_date'])
             $("#mail_content").html(res.data.message_data[0]['full_message'])
 
+            // mail participentes details
             $('.from_mail').html(res.data.users[res.data.message_data[0]['sender_id']])
             $('.to_mail').html(res.data.users[res.data.message_data[0]['receiver_id']])
             $('.cc_mail').html(res.data.users[res.data.message_data[0]['cc_receiver_id']])
             $('.bcc_mail').html(res.data.users[res.data.message_data[0]['bcc_receiver_id']])
+
+            // get attachments
             var html='<h5 >Attachments</h5>' ;
             $.each(res.data.attachments, function(indexInArray, valueOfElement) {
                 var attach_name = valueOfElement['path'];
                 console.log(attach_name);
                 html=html+'<a class="d-block" href="../images/mail_attachments/' + attach_name + '">' + attach_name + '</a>'    
-
             })
             $("#attachments").html(html)
-
-
-
-
-            // mail participentes details
-
         })
     });
 </script>

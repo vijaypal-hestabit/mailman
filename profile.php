@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-
     include_once 'dashboard_header.php';
 ?>
     <div class="profile col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">

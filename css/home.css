@@ -57,4 +57,8 @@ header .grid {
 .forgot_section .forgot_content .forgot_shadow {
   border: 3px solid #3a3a3a;
   box-shadow: 4px 4px #3a3a3a !important;
+}
+
+.reset_pass_form {
+  grid-template-columns: auto auto;
 }/*# sourceMappingURL=home.css.map */

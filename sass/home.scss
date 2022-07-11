@@ -58,7 +58,7 @@ header {
 
             .login_shadow {
                 border: 3px solid $theme_color;
-                box-shadow: 4px 4px $theme_color !important;
+                box-shadow: 4px 4px $theme_color  !important;
             }
 
             .create_shadow {
@@ -69,18 +69,18 @@ header {
     }
 }
 
-// .forgot_logo{
-//     text-align: left;
-// }
 .forgot_section {
     text-align: left;
 
     .forgot_content {
-
-        // margin-left: 15px;
         .forgot_shadow {
             border: 3px solid $theme_color;
-            box-shadow: 4px 4px $theme_color !important;
+            box-shadow: 4px 4px $theme_color  !important;
         }
     }
+}
+
+// reset password page
+.reset_pass_form {
+    grid-template-columns: auto auto;
 }

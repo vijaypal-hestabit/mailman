@@ -1,11 +1,8 @@
 <?php include_once 'header.php'; ?>
 
 <div class="container">
-    <form class="grid" style="grid-template-columns: auto auto;" >
+    <form class="grid reset_pass_form">
         <div class="d-grid align-items-center">
-            <!-- <figure class="forgot_logo">
-                <img src="assets/logo.svg" alt="logo">
-            </figure> -->
             <div class="forgot_section">
                 <h2>Create new password</h2>
                 <h4 class="error"></h4>

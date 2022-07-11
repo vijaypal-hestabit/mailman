@@ -81,6 +81,7 @@
     var app = new Vue({
         el: '#main',
         data: function() {
+            // get data from input form
             this.f_name = "",
                 this.l_name = "",
                 this.user_name = "",
@@ -92,8 +93,6 @@
         },
         methods: {
             sign_up: function(event) {
-                // event.preventDefault();
-
                 var profile_picture = document.getElementById('profile_pic')
                 var formData = new FormData();
                 formData.append('f_name', this.f_name);
@@ -159,9 +158,9 @@
                             } else {
                                 $('#password_err').html('')
                             }
-                            if(response.profile_img.response){
+                            if (response.profile_img.response) {
 
-                            }else{
+                            } else {
                                 $('#profile_err').html(response.profile_img.message)
                             }
                         }
@@ -175,6 +174,7 @@
         },
     })
 
+    // check terms and condition checked or not
     $('#terms').click(function() {
         if ($(this).prop('checked') == true) {
             $('#sign_up').removeAttr('disabled');
@@ -185,7 +185,8 @@
     $('#sign_in').click(function(e) {
         e.preventDefault();
 
-        setTimeout(loginTimeout, 2000);
+        setTimeout(loginTimeout(), 2000);
+
         function loginTimeout() {
             window.location.replace('index.php');
         }

@@ -91,7 +91,7 @@ main button {
   display: none !important;
 }
 
-.mail_content {
+.cursor-pointer {
   cursor: pointer;
 }
 
