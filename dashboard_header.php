@@ -72,19 +72,19 @@ session_start();
                                 <button class="btn btn-hb" data-bs-toggle="modal" data-bs-target="#composeModal">+ Compose</button>
                             </li>
                             <li class="nav-item mt-2">
-                                <a class="nav-link status active" aria-current="page" href="#" @click="open_inbox">Inbox
+                                <a class="nav-link status active" aria-current="page" id="inbox" href="dashboard.php" @click="open_inbox">Inbox
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" href="#" @click="open_sent">Sent</a>
+                                <a class="nav-link status" id="sent" href="dashboard.php" @click="open_sent">Sent</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" href="#" @click="open_draft">
+                                <a class="nav-link status" id="draft" href="dashboard.php" @click="open_draft">
                                     Draft
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" href="#" @click="open_trash">
+                                <a class="nav-link status" id="trash" href="dashboard.php" @click="open_trash">
                                     Trash
                                 </a>
                             </li>

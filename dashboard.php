@@ -93,7 +93,7 @@ if (isset($_SESSION['user_id'])) {
                         </label>
                         <div class="attachments w-100 d-grid">
                             <template v-for="(item,index) in attch_list">
-                                    <a :href="'./'+item.path">{{item.path}}</a>
+                                    <a :href="'images/mail_attachments/'+item.path">{{item.path}}</a>
                             </template>
                         </div>
                         <div class="row">
