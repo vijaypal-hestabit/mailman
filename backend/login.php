@@ -14,11 +14,12 @@ class login
         $username = $_POST['user_name'];
         $password = $_POST['password'];
 
-        // $this->login_validate($username, $password,);
+        $this->login_validate($username, $password,);
     }
 
-    // public function login_validate($username, $password)
-    // {
+    public function login_validate($username, $password)
+    {
+        echo " inn ";
     //     $check_user = new LoginController();
 
     //     // user name validation
@@ -45,6 +46,6 @@ class login
     //         $response = ['username' => $usernamer, 'password' => $passwordr];
     //         echo json_encode($response);
     //     }
-    // }
+    }
 }
 $ob = new login();
