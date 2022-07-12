@@ -19,6 +19,7 @@ class login
         // $email = null;
 
         $this->login_validate($username, $password,);
+        echo "died";
     }
 
     public function login_validate($username,$password)
@@ -41,8 +42,8 @@ class login
 
         
         // login on database
-        echo $passwordr;
-        die;   
+        // echo $passwordr;
+        // die;   
         if($usernamer == 1 && $passwordr == 1){
            $res = $check_user->login($username,$password);
             echo json_encode(['login'=>$res]);
