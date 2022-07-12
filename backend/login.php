@@ -14,12 +14,11 @@ class login
     function __construct()
     {
         
-        $username = ($_POST['user_name']);
+        echo $username = ($_POST['user_name']);
+        die;
         $password = ($_POST['password']);
         // $email = null;
 
-        echo "died";
-        die;
         $this->login_validate($username, $password,);
     }
 
