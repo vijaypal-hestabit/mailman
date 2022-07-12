@@ -1,5 +1,6 @@
 <?php
-use validator\validator;
+
+// use validator\validator;
 include "validator.php";
 include "process.php";
 include "controller/loginController.php";
@@ -12,12 +13,14 @@ class login
         $username = $_POST['user_name'];
         $password = ($_POST['password']);
         // $email = null;
-
+        echo 'slfj';
+        die;
         $this->login_validate($username, $password,);
     }
 
     public function login_validate($username, $password)
     {
+        die;
         $check_user = new LoginController();
 
         // user name validation
