@@ -41,7 +41,8 @@ class login
 
         
         // login on database
-        
+        echo $passwordr;
+        die;   
         if($usernamer == 1 && $passwordr == 1){
            $res = $check_user->login($username,$password);
             echo json_encode(['login'=>$res]);
