@@ -14,7 +14,7 @@ class login
     function __construct()
     {
         
-        echo $username = ($_POST['user_name']);
+        echo $username = $_POST['user_name'];
         die;
         $password = ($_POST['password']);
         // $email = null;
