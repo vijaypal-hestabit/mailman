@@ -5,9 +5,9 @@ ini_set("diplay_errors", 1);
 
 
 $username = $_POST['user_name'];
-$password = $_POST['password'];
-echo  $username;
+echo  $userxname;
 die;
+$password = $_POST['password'];
 
 use validator\validator;
 
