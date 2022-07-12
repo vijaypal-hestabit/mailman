@@ -12,6 +12,8 @@ class ComposeEmailController
         $obj = new dbConnection();
         $this->conn = $obj->conn;
     }
+
+    // set value for draft
     public function make_draft($to_email, $user_id, $inbox_id)
     {
         $to_email = $this->conn->real_escape_string($to_email);
@@ -23,10 +25,8 @@ class ComposeEmailController
             $receiver_id = $data['id'];
             if ($inbox_id == '') {
                 $sql = "INSERT INTO `inbox`(`receiver_id`, `short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ($receiver_id,'',$sender_id,1,'')";
-                // die;
                 $result = $this->conn->query($sql);
                 $last_id = $this->conn->insert_id;
-                // $data=$result->fetch_assoc();
                 echo json_encode(['inbox_id' => $last_id]);
             } else {
                 $sql = "UPDATE inbox set receiver_id = $receiver_id where id= $inbox_id";
@@ -40,6 +40,8 @@ class ComposeEmailController
             ]);
         }
     }
+
+    // set value for cc mail
     public function save_cc_mail($cc_mail, $user_id, $inbox_id)
     {
         $cc_mail = $this->conn->real_escape_string($cc_mail);
@@ -51,13 +53,11 @@ class ComposeEmailController
             $receiver_id = $data['id'];
             if ($inbox_id == '') {
                 $sql = "INSERT INTO `inbox`(`sender_id`,  `draft_status`, `full_message`) VALUES ($sender_id,1,'')";
-                // die;
                 $result = $this->conn->query($sql);
                 $last_id = $this->conn->insert_id;
                 $query = "INSERT INTO `carbon_copy`(`cc_email`, `inbox_id`) VALUES ('{$cc_mail}',$last_id)";
                 $result = $this->conn->query($query);
 
-                // $data=$result->fetch_assoc();
                 echo json_encode(['inbox_id' => $last_id]);
             } else {
                 $sql = "SELECT cc_id from carbon_copy where inbox_id = $inbox_id";
@@ -79,6 +79,8 @@ class ComposeEmailController
             ]);
         }
     }
+
+    // set value for bcc mail
     public function save_bcc_mail($bcc_mail, $user_id, $inbox_id)
     {
 
@@ -91,13 +93,11 @@ class ComposeEmailController
             $receiver_id = $data['id'];
             if ($inbox_id == '') {
                 $sql = "INSERT INTO `inbox`(`receiver_id`, `short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ('','',$sender_id,1,'')";
-                // die;
                 $result = $this->conn->query($sql);
                 $last_id = $this->conn->insert_id;
                 $query = "INSERT INTO `blind_carbon_copy`(`bcc_email`, `inbox_id`,`bcc_receiver_id`) VALUES ('{$bcc_mail}',$last_id,{$data['id']})";
                 $result = $this->conn->query($query);
 
-                // $data=$result->fetch_assoc();
                 echo json_encode(['inbox_id' => $last_id]);
             } else {
                 $sql = "SELECT bcc_id from blind_carbon_copy where inbox_id={$data['id']}";
@@ -118,17 +118,17 @@ class ComposeEmailController
             ]);
         }
     }
+    
+    // set value for subject mail
     public function save_subject($subject, $user_id, $inbox_id)
     {
         $subject =  $this->conn->real_escape_string($subject);
         $sender_id = $this->conn->real_escape_string($user_id);
         if ($inbox_id == '') {
             $sql = "INSERT INTO `inbox`(`short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ('$subject',$sender_id,1,'')";
-            // die;
             $result = $this->conn->query($sql);
             $last_id = $this->conn->insert_id;
 
-            // $data=$result->fetch_assoc();
             echo json_encode(['inbox_id' => $last_id]);
         } else {
             $query = "UPDATE inbox set short_subject_msg='$subject' where id=$inbox_id";
@@ -136,17 +136,17 @@ class ComposeEmailController
             echo json_encode($result);
         }
     }
+
+    // set value for messae mail
     public function save_message($message, $user_id, $inbox_id)
     {
         $message =  $this->conn->real_escape_string($message);
         $sender_id = $this->conn->real_escape_string($user_id);
         if ($inbox_id == '') {
             $sql = "INSERT INTO `inbox`(`sender_id`,  `draft_status`, `full_message`) VALUES ($sender_id,1,'$message')";
-            // die;
             $result = $this->conn->query($sql);
             $last_id = $this->conn->insert_id;
 
-            // $data=$result->fetch_assoc();
             echo json_encode(['inbox_id' => $last_id]);
         } else {
             $query = "UPDATE inbox set full_message='$message' where id=$inbox_id";
@@ -154,14 +154,13 @@ class ComposeEmailController
             echo json_encode($result);
         }
     }
+
+    // set value for attachment mail
     public function save_attachment($path, $user_id, $inbox_id)
     {
         $sender_id = $this->conn->real_escape_string($user_id);
-        // echo $inbox_id;
-        // die;
         if ($inbox_id == '') {
             $sql = "INSERT INTO `inbox`(`sender_id`,  `draft_status`, `full_message`) VALUES ($sender_id,1,'')";
-            // die;
             $result = $this->conn->query($sql);
             $last_id = $this->conn->insert_id;
             $query = "INSERT INTO `attachments`(`path`, `inbox_id`) VALUES  ('$path',$last_id)";
@@ -170,7 +169,6 @@ class ComposeEmailController
             $res = $this->conn->query($sql);
             $attachments = $res->fetch_all(MYSQLI_ASSOC);
 
-            // $data=$result->fetch_assoc();
             echo json_encode([
                 'inbox_id' => $last_id,
                 'attahcments'=>$attachments
@@ -186,6 +184,8 @@ class ComposeEmailController
             echo json_encode(['attahcments'=>$attachments]);
         }
     }
+
+    // set value draft to inbox
     function send_email($inbox_id)
     {
         $query = "UPDATE inbox set draft_status=0 where id=$inbox_id";

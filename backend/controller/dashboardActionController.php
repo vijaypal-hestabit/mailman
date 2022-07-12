@@ -187,6 +187,9 @@ class DashboardController
         else if($page_name=='Sent'){
             $sql = "UPDATE inbox Set sender_delete=1 where id IN (".implode(',',$messageIds).")";
             $res= $this->conn->query($sql);
+        }else if($page_name=='Draft'){
+            $sql = "UPDATE inbox Set sender_delete=1 where id IN (".implode(',',$messageIds).")";
+            $res= $this->conn->query($sql);
         }
         echo json_encode($res);
     }

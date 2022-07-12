@@ -13,7 +13,8 @@ class compose extends CommonFunctions
     function __construct()
     {
         $data = json_decode(file_get_contents("php://input"), TRUE);
-        if (isset($data['to_mail'])) {
+
+        if (isset($data['to_mail'])) {                         // details for draft
             $to_email = $data['to_mail'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -22,7 +23,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->make_draft($to_email, $user_id, $inbox_id);
-        } else if (isset($data['cc_mail'])) {
+        } else if (isset($data['cc_mail'])) {                   // 
             $cc_mail = $data['cc_mail'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
