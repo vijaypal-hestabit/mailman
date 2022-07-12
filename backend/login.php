@@ -1,5 +1,7 @@
 <?php
-
+echo "Hello";
+print_r($_POST);
+die;
 error_reporting(E_ALL);
 ini_set("diplay_errors", 1);
 
