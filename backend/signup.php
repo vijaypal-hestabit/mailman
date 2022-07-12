@@ -110,7 +110,7 @@ class register extends CommonFunctions
             $profile_msg_error=validator::is_fileAuth($profile_img,$size=2097152,$allowedExtensions=['jpg','png']);
         }
         // insert data on database
-        if ($fnamer == 1 && $lnamer == 1 && $usernamer == 1 && $emailr == 1 && $recoveryemailr == 1 &&  $passwordr['value'] == 1 && $profile_msg_error['response'] == 1) {
+        if ($fnamer == 1 && $lnamer == 1 && $usernamer == 1 && $emailr == 1 && $recoveryemailr == 1 &&  $passwordr['status'] == 1 && $profile_msg_error['response'] == 1) {
             $check_user_email->registration($fname, $lname, $username, $email . '@mailman.com', $profile_img_name, $password, $recoveryemail) ;
             echo json_encode(['signup' => true]);
         } else {
