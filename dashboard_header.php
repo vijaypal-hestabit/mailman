@@ -76,15 +76,15 @@ session_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" id="sent" href="dashboard.php" @click="open_sent">Sent</a>
+                                <a class="nav-link status" id="sent" href="#" @click="open_sent">Sent</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" id="draft" href="dashboard.php" @click="open_draft">
+                                <a class="nav-link status" id="draft" href="#" @click="open_draft">
                                     Draft
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link status" id="trash" href="dashboard.php" @click="open_trash">
+                                <a class="nav-link status" id="trash" href="#" @click="open_trash">
                                     Trash
                                 </a>
                             </li>

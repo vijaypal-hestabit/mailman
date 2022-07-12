@@ -31,8 +31,8 @@ if (isset($_SESSION['user_id'])) {
 
             </div>
             <div class="mt-4">
-                <button class="btn btn-hb mr-2">Reply</button>
-                <button class="btn btn-hb">Reply all</button>
+                <button class="btn btn-hb mr-2" id="reply">Reply</button>
+                <button class="btn btn-hb" id="replyall">Reply all</button>
             </div>
         </div>
     </main>
@@ -51,20 +51,21 @@ if (isset($_SESSION['user_id'])) {
                 </div>
                 <div class="modal-body" id="compose_email">
                     <fieldset class="form-group float-right w-100 border p-2">
+                        <div class="error" id="message_error"></div>
                         <label class="form-control border-0" for="mail_id">
                             <input type="email" class="form-control" name="" id="mail_id" placeholder="To" v-model="mail" @change="make_draft">
                         </label>
                         <div class="error" id="email_err">{{ email_error }}</div>
-                        <label class="form-control border-0" for="cc">
+                        <label class="form-control border-0" for="cc" id="cc_label">
                             <input type="email" class="form-control" name="" id="cc" placeholder="CC" v-model="cc_mail" @change="save_cc_mail">
                         </label>
                         <div class="error" id="email_err">{{ cc_email_error }}</div>
 
-                        <label class="form-control border-0" for="bcc">
+                        <label class="form-control border-0" for="bcc" id="bcc_label">
                             <input type="email" class="form-control" name="" id="bcc" placeholder="BCC" v-model="bcc_mail" @change="save_bcc_mail">
                         </label>
                         <label class="form-control border-0" for="subject">
-                            <input type="text" class="form-control" name="" id="subject" placeholder="Subject" v-model="subject" @change="save_subject">
+                            <input type="text" class="form-control" name="" id="subject_input" placeholder="Subject" v-model="subject" @change="save_subject">
                         </label>
                         <label for="msg_body" class="form-control border-0  ">
                             <textarea class="form-control" name="" id="msg_body" cols="30" rows="10" placeholder="Message Body" v-model="message" @change="save_message"></textarea>
@@ -93,6 +94,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+
 
     <?php include_once 'dashboard_footer.php'; ?>
 <?php
@@ -123,13 +125,24 @@ if (isset($_SESSION['user_id'])) {
             $('.bcc_mail').html(res.data.users[res.data.message_data[0]['bcc_receiver_id']])
 
             // get attachments
-            var html = '<h5 >Attachments</h5>';
+            var html = '<h5>Attachments</h5>';
             $.each(res.data.attachments, function(indexInArray, valueOfElement) {
                 var attach_name = valueOfElement['path'];
                 html = html + '<a class="d-block" href="./images/mail_attachments/' + attach_name + '">' + attach_name + '</a>'
             })
             $("#attachments").html(html)
-        })
+        });
+
+        $('#reply').click(function (e) { 
+            $('#composeModal').modal('show');
+            var to  = $('.from_mail').text()
+            var subject = $("#subject").text();
+            $('#mail_id').val(to);
+            $('#subject_input').val(subject)
+
+            $('#mail_id').prop('readonly',true)
+            $('#cc_label,#bcc_label').addClass('d-none')
+        });
     });
 </script>
 <script>
@@ -188,7 +201,7 @@ if (isset($_SESSION['user_id'])) {
                 }
                 var id = "";
                 axios.post('backend/compose_mail.php', data).then(res => {
-                    console.log(res['data'])
+                    console.log(res)
                     if (res['data'] == true) {
                         $('#composeModal').modal('hide');
                         alert('email_sent')
@@ -594,10 +607,12 @@ if (isset($_SESSION['user_id'])) {
         },
     })
 
-
+    // goto mail details
     $(document).on("click", "td", function() {
         var message_id = $(this).closest('tr').attr('data_id');
     });
+
+    // hide compose moldal
     $('#composeModal').on('hidden.bs.modal', function() {
         location.reload()
     });
