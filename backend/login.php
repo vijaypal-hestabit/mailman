@@ -13,6 +13,7 @@ class login
         
         echo $username = $_POST['user_name'];
         echo $password = $_POST['password'];
+        die;
         var_dump($_POST);
 
         $this->login_validate($username, $password,);
