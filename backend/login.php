@@ -1,8 +1,7 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+ini_set("diplay_errors", 1);
 
 use validator\validator;
 
@@ -15,8 +14,7 @@ class login
     function __construct()
     {
         
-        echo $username = $_POST['user_name'];
-        die;
+        $username = ($_POST['user_name']);
         $password = ($_POST['password']);
         // $email = null;
 
@@ -43,8 +41,7 @@ class login
 
         
         // login on database
-        // echo $passwordr;
-        // die;   
+        
         if($usernamer == 1 && $passwordr == 1){
            $res = $check_user->login($username,$password);
             echo json_encode(['login'=>$res]);
