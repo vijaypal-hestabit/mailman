@@ -3,9 +3,9 @@
 class dbConnection
 {
     private $host = 'localhost';
-    private $user = 'root';
-    private $pass = 'hestabit';
-    private $dbname = 'hestamail';
+    private $user = 'tse';
+    private $pass = 'bPmtHasjyTJ2SgZJ';
+    private $dbname = 'vijay_pal';
     public $conn;
 
     public function __construct()
