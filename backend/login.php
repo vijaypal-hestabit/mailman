@@ -1,8 +1,8 @@
 <?php
 
-echo "Hello";
-die;
-print_r($_POST);
+// echo "Hello";
+// die;
+// // print_r($_POST);
 use validator\validator;
 
 include "validator.php";
