@@ -1,6 +1,6 @@
 <?php
-echo "Hello";
-// // print_r($_POST);
+print_r($_POST);
+die;
 // use validator\validator;
 
 // include "validator.php";
