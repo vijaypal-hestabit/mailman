@@ -56,11 +56,14 @@ if (isset($_SESSION['user_id'])) {
         var formData = new FormData();
         formData.append('user_name', log_user_name);
         formData.append('password', password);
-        
+
         $.ajax({
             type: "POST",
             url: "backend/login.php",
             data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
             dataType: "json",
             success: function(response) {
                 console.log(response);
