@@ -20,6 +20,7 @@ class login
 
         $this->login_validate($username, $password,);
         echo "died";
+        die;
     }
 
     public function login_validate($username,$password)
