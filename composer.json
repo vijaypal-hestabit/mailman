@@ -3,6 +3,6 @@
         "phpmailer/phpmailer": "^6.6",
         "google/auth": "^1.21",
         "league/oauth2-client": "^2.6",
-        "league/oauth2-google": "^4.0"
+        "league/oauth2-google": "^3.8"
     }
 }
