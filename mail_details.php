@@ -31,7 +31,7 @@ if (isset($_SESSION['user_id'])) {
 
             </div>
             <div class="mt-4">
-                <button class="btn btn-hb mr-2" id="reply">Reply</button>
+                <button class="btn btn-hb mr-2" id="reply" @click="reply">Reply</button>
                 <button class="btn btn-hb" id="replyall">Reply all</button>
             </div>
         </div>
@@ -172,6 +172,18 @@ if (isset($_SESSION['user_id'])) {
             }
         },
         methods: {
+            reply :function(e){
+                var to  = $('.from_mail').text()
+                var subject = $("#subject").text();
+                this.mail=to
+                this.subject=subject
+                // $('#mail_id').val(to);
+                // $('#subject_input').val(subject)
+                
+                // $('#mail_id').prop('readonly',true)
+                $('#cc_label,#bcc_label').addClass('d-none')
+                $('#composeModal').modal('show');
+            },
             navigate: function(id) {
                 if (this.page_name == 'Inbox') {
                     location.href = "mail_details.php?id=" + id
