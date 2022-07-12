@@ -52,5 +52,5 @@ class login
         }
     }
 }
-$ob = new login();
+new login();
 // $ob->login_validate();
