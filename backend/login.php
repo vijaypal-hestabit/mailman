@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(-1);
 // echo "ffffff";
 use validator\validator;
 include "validator.php";
@@ -8,18 +8,19 @@ include "controller/loginController.php";
 
 class login
 {
-    // function __construct()
-    // {
+    function __construct()
+    {
         
-    //     $username = $_POST['user_name'];
-    //     $password = $_POST['password'];
+        echo $username = $_POST['user_name'];
+        echo $password = $_POST['password'];
+        var_dump($_POST);
 
-    //     $this->login_validate($username, $password,);
-    // }
+        $this->login_validate($username, $password,);
+    }
 
     public function login_validate()
     {
-        // echo " inn ";
+        echo " inn ";
         $username = $_POST['user_name'];
         $password = $_POST['password'];
         // print_r($_POST);
@@ -52,4 +53,4 @@ class login
     }
 }
 $ob = new login();
-$ob->login_validate();
+// $ob->login_validate();
