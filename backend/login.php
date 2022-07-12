@@ -3,8 +3,8 @@
 error_reporting(E_ALL);
 ini_set("diplay_errors", 1);
 echo "Hello";
-print_r($_POST);
 die;
+print_r($_POST);
 use validator\validator;
 
 include "validator.php";
