@@ -16,7 +16,7 @@ class login
         die;
         var_dump($_POST);
 
-        $this->login_validate($username, $password,);
+        // $this->login_validate($username, $password,);
     }
 
     public function login_validate()
