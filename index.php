@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
         var password = $('#log_password').val();
         
         $.ajax({
-            type: "post",
+            type: "POST",
             url: "backend/login.php",
             data: {
                 'user_name': log_user_name,
