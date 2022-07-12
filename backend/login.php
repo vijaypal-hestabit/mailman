@@ -2,9 +2,9 @@
 error_reporting(-1);
 // echo "ffffff";
 use validator\validator;
-include "validator.php";
-include "process.php";
-include "controller/loginController.php";
+// include "validator.php";
+// include "process.php";
+// include "controller/loginController.php";
 
 class login
 {
