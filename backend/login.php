@@ -11,9 +11,8 @@ class login
     function __construct()
     {
         
-        echo $username = $_POST['user_name'];
-        echo $password = $_POST['password'];
-        var_dump($_POST);
+        $username = $_POST['user_name'];
+        $password = $_POST['password'];
 
         $this->login_validate($username, $password);
     }
