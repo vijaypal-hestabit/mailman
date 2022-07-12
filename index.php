@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
         $.ajax({
             type: "POST",
             url: "backend/login.php",
-            data: '{"user_name": log_user_name,"password": password}',
+            data: '{"user_name":"'+ log_user_name +'","password":"'+password+'"}',
             dataType: "json",
             success: function(response) {
                 if (response.login == true) {
