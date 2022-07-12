@@ -8,18 +8,21 @@ include "controller/loginController.php";
 
 class login
 {
-    function __construct()
-    {
+    // function __construct()
+    // {
         
-        $username = $_POST['user_name'];
-        $password = $_POST['password'];
+    //     $username = $_POST['user_name'];
+    //     $password = $_POST['password'];
 
-        $this->login_validate($username, $password,);
-    }
+    //     $this->login_validate($username, $password,);
+    // }
 
-    public function login_validate($username, $password)
+    public function login_validate()
     {
         echo " inn ";
+        $username = $_POST['user_name'];
+        $password = $_POST['password'];
+        print_r($_POST);
     //     $check_user = new LoginController();
 
     //     // user name validation
@@ -49,3 +52,4 @@ class login
     }
 }
 $ob = new login();
+$ob->login_validate();
