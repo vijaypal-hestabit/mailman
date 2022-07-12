@@ -3,12 +3,6 @@
 error_reporting(E_ALL);
 ini_set("diplay_errors", 1);
 
-
-$username = $_POST['user_name'];
-echo  $userxname;
-die;
-$password = $_POST['password'];
-
 use validator\validator;
 
 include "validator.php";
@@ -19,14 +13,8 @@ class login
 {
     function __construct()
     {
-<<<<<<< HEAD
         
-        echo $username = $_POST['user_name'];
-        die;
-=======
-
-        $username = ($_POST['user_name']);
->>>>>>> 4b06a8d2317bf66f1595b1f14daebf1f69b24183
+        $username = $_POST['user_name'];
         $password = ($_POST['password']);
         // $email = null;
 
