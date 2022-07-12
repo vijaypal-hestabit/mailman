@@ -52,13 +52,14 @@ if (isset($_SESSION['user_id'])) {
     $('#log_in').click(function() {
         var log_user_name = $('#log_user_name').val();
         var password = $('#log_password').val();
-        var data = {};
-        data.user_name = log_user_name;
-        data.password = password;
+        
         $.ajax({
             type: "post",
             url: "backend/login.php",
-            data: JSON.stringify(data),
+            data: {
+                'user_name': log_user_name,
+                'password': password
+            },
             dataType: "json",
             success: function(response) {
                 if (response.login == true) {
