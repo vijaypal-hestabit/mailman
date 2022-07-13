@@ -26,6 +26,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
         <div class="row">
+            <?php print_r($_SERVER); ?>
             <div class="col-12 mb-3">
                 <div class="card">
                     <h5 class="card-header">{{ page_name }}</h5>
