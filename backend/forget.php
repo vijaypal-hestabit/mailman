@@ -15,17 +15,10 @@ class reset
     {
         if (isset($_POST['forgot_user_name'])) {
             $email = ($_POST['forgot_user_name']);
-            //die;
-
-            
-
-            // if (!validator::is_email($email)['value']) {
-            //     $error = (validator::is_email($email)['message']);
-            //     $path = $_SERVER['HTTP_ORIGIN'] . '/hbmail/forgot.php?error=' . $error;
-            //     header('location:' . $path);
-            // }
             $this->generate_reset_link($email);
         }
+
+
         if (isset($_POST['verify_reset_code'])) {
             $code = $_POST['reset_code'];
             $unique_id = $_POST['unique_id'];
@@ -40,7 +33,6 @@ class reset
                     'result' => false,
                     'message' => $match_password_status['message']
                 ]);
-                die;
             } else {
                 $unique_id = $_POST['unique_id'];
                 $this->update_password($password, $unique_id);

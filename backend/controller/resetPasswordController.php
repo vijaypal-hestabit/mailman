@@ -13,7 +13,8 @@ class ResetPasswordController{
     public function reset_link($email)
     {
         $resetcode = mysqli_real_escape_string($this->db->conn,md5(time()));
-        $sql = "UPDATE users set reset_link='{$resetcode}' where email='$email'";
+
+        $sql = "UPDATE users set reset_link='{$resetcode}' where email='$email' or user_name = '$email'";
         $res=$this->db->conn->query($sql);
         $resetlink="http://localhost/hbmail/reset_password.php?reset_code=".$resetcode."&unique_id=".base64_encode($email);
         return $resetlink;
@@ -44,7 +45,7 @@ class ResetPasswordController{
     }
     public function verify_reset_hash($code,$email)
     {
-        $sql = "SELECT reset_link as reset_code from users where email='$email'";
+        $sql = "SELECT reset_link as reset_code from users where email='$email' or user_name = '$email'";
         $res=$this->db->conn->query($sql)->fetch_assoc();
         if($res['reset_code'] == $code){
             return true;
@@ -54,10 +55,10 @@ class ResetPasswordController{
     }
     function change_password($email,$password){
         // $password=$this->db->conn->real_escape_string($password);
-        $sql = "UPDATE users set password='$password' where email='$email'";
+        $sql = "UPDATE users set password='$password' where email='$email' or user_name = '$email'";
         $res = $this->db->conn->query($sql);
         if($res){
-            $sql = "UPDATE users set reset_link='' where email='$email'";
+            $sql = "UPDATE users set reset_link='' where email='$email' or user_name = '$email'";
             $res = $this->db->conn->query($sql);
             echo json_encode([
                 'result'=>true
@@ -71,7 +72,7 @@ class ResetPasswordController{
     }
     function change_password_dash($email,$password){
         // $password=$this->db->conn->real_escape_string($password);
-        $sql = "UPDATE users set password='$password' where email='$email'";
+        $sql = "UPDATE users set password='$password' where email='$email' or user_name = '$email'";
         $res = $this->db->conn->query($sql);
         if($res){
             return true;

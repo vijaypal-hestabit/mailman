@@ -227,6 +227,7 @@ if (isset($_SESSION['user_id'])) {
                         res['data']['variable'] = res['data']['message']
                     }
                 })
+                this.make_draft
             },
             make_draft: function() {
 
