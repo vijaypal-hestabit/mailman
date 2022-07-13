@@ -7,7 +7,7 @@
                 <img src="assets/logo.svg" alt="logo">
             </figure> -->
             <div class="forgot_section">
-                <h2>Enter your registered E-mail</h2>
+                <h2>Enter your Username or Mailman Id</h2>
                 <?php
                     if (isset($_GET['error'])) {
                         echo "<h4 class='error'>".$_GET['error']."</h4>";
