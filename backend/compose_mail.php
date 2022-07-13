@@ -14,7 +14,11 @@ class compose extends CommonFunctions
     {
         $data = json_decode(file_get_contents("php://input"), TRUE);
 
-        if (isset($data['to_mail'])) {                         // details for draft
+        if ($data['user_id'] == null) {         // set default user id
+            $user_id = $_SESSION['id'];
+        }
+
+        if (isset($data['to_mail'])) {                  // details for draft
             $to_email = $data['to_mail'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -23,7 +27,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->make_draft($to_email, $user_id, $inbox_id);
-        } else if (isset($data['cc_mail'])) {                   // 
+        } else if (isset($data['cc_mail'])) {                   // set cc value in draft
             $cc_mail = $data['cc_mail'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -32,7 +36,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_cc_mail($cc_mail, $user_id, $inbox_id);
-        } else if (isset($data['bcc_mail'])) {
+        } else if (isset($data['bcc_mail'])) {                  // set bcc value in draft
             $bcc_mail = $data['bcc_mail'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -41,7 +45,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_bcc_mail($bcc_mail, $user_id, $inbox_id);
-        } else if (isset($data['subject'])) {
+        } else if (isset($data['subject'])) {                 // set subject value in draft
             $subject = $data['subject'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -50,7 +54,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_subject($subject, $user_id, $inbox_id);
-        } else if (isset($data['message'])) {
+        } else if (isset($data['message'])) {                 // set mail value in draft
             $message = $data['message'];
             $user_id = $data['user_id'];
             if (isset($data['inbox_id'])) {
@@ -59,7 +63,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_message($message, $user_id, $inbox_id);
-        } else if (isset($_FILES['files'])) {
+        } else if (isset($_FILES['files'])) {                 // set files value in draft
             $file = $_FILES['files'];
             $user_id = $_POST['user_id'];
             if (isset($_POST['inbox_id']) && ($_POST['inbox_id'] !== 'null')) {
@@ -68,7 +72,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_attachment($file, $user_id, $inbox_id);
-        } else if (isset($data['send_mail'])) {
+        } else if (isset($data['send_mail'])) {                 // set final submit of mail
             if (isset($data['inbox_id'])) {
                 $inbox_id = $data['inbox_id'];
             } else {
