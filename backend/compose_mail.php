@@ -14,9 +14,9 @@ class compose extends CommonFunctions
     {
         $data = json_decode(file_get_contents("php://input"), TRUE);
 
-        if ($data['user_id'] == null) {         // set default user id
-            $user_id = $_SESSION['id'];
-        }
+        // if ($data['user_id'] == null) {         // set default user id
+        //     $user_id = $_SESSION['id'];
+        // }
 
         if (isset($data['to_mail'])) {                  // details for draft
             $to_email = $data['to_mail'];
@@ -63,7 +63,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             $this->save_message($message, $user_id, $inbox_id);
-        } else if (isset($_FILES['files'])) {                 // set files value in draft
+        } else if (isset($_FILES['files'])) {                 // set files path in draft
             $file = $_FILES['files'];
             $user_id = $_POST['user_id'];
             if (isset($_POST['inbox_id']) && ($_POST['inbox_id'] !== 'null')) {

@@ -34,10 +34,10 @@ function send_mail($msg, $subject, $reciver_email, $reciverName)
     //Tell PHPMailer to use SMTP
     $mail->isSMTP();
 
-    //Enable SMTP debugging
-    //SMTP::DEBUG_OFF = off (for production use)
-    //SMTP::DEBUG_CLIENT = client messages
-    //SMTP::DEBUG_SERVER = client and server messages
+    // Enable SMTP debugging
+    // SMTP::DEBUG_OFF = off (for production use)
+    // SMTP::DEBUG_CLIENT = client messages
+    // SMTP::DEBUG_SERVER = client and server messages
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
     //Set the hostname of the mail server
@@ -64,11 +64,11 @@ function send_mail($msg, $subject, $reciver_email, $reciverName)
     //Either the gmail account owner, or the user that gave consent
     $email = 'vijaypal.hestabit@gmail.com';
     $clientId = '767536814596-e0c5lcbgke5mvkn56bkfp5htn9s21nq0.apps.googleusercontent.com';
-    $clientSecret = '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';
+    $clientSecret = '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';
 
     //Obtained by configuring and running get_oauth_token.php
     //after setting up an app in Google Developer Console.
-    $refreshToken = '1//0gT9Qv9Iuya56CgYIARAAGBASNwF-L9Ir9U6qQrhaIEOn7vdgB2grvDZfzVBxxUEUtU92TGZX5pY_SPk1nZL0APalJqVJmtjNFxg';
+    $refreshToken = '1//0gs7TzB-tCj1eCgYIARAAGBASNwF-L9IrNTPuS2twv0dRNdrQ3LEvP-js1HvkD-uQSdARepXaBh0L2ifLtZd75cFjeYVa4DTSXgU';
 
     //Create a new OAuth2 provider instance
     $provider = new Google(

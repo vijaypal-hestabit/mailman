@@ -213,7 +213,6 @@ if (isset($_SESSION['user_id'])) {
                 }
                 var id = "";
                 axios.post('backend/compose_mail.php', data).then(res => {
-                    console.log(res)
                     if (res['data'] == true) {
                         $('#composeModal').modal('hide');
                         alert('email_sent')
@@ -445,8 +444,6 @@ if (isset($_SESSION['user_id'])) {
                         $("input[name=action]:checked").each(function() {
                             checked_all_array.push($(this).val());
                         });
-
-                        // console.log(checked_all_array)
 
                         $('.read_status, .unread_status, .delete_status').removeClass('d-none');
                         this.selected = checked_all_array
