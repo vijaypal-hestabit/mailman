@@ -19,9 +19,7 @@ class login
 
     public function login_validate($username, $password)
     {
-        $username = $_POST['user_name'];
-        $password = $_POST['password'];
-        // print_r($_POST);
+        
         $check_user = new LoginController();
 
         // user name validation
