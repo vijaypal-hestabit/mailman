@@ -14,7 +14,7 @@
                     }
                 ?>
                 <div class="forgot_content mt-2">
-                    <input type="text" name="forgot_user_name" id="forgot_user_name" placeholder="abc@xyz.com" required><br>
+                    <input type="text" name="forgot_user_name" id="forgot_user_name" placeholder="abc@mailman.com" required><br>
                     <div class="d-flex justify-content-between mt-2">
                         <div>
                             Back to <a href="index.php">Login</a>
