@@ -16,7 +16,7 @@ class ResetPasswordController{
 
         $sql = "UPDATE users set reset_link='{$resetcode}' where email='$email' or user_name = '$email'";
         $res=$this->db->conn->query($sql);
-        $resetlink="http://hestalabs.com/tse/mailman/reset_password.php?reset_code=".$resetcode."&unique_id=".base64_encode($email);
+        $resetlink="../../reset_password.php?reset_code=".$resetcode."&unique_id=".base64_encode($email);
         return $resetlink;
     }
 
