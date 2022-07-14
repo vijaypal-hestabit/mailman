@@ -31,7 +31,7 @@ class ResetPasswordController{
             <div style='width: 100%'>
                 <h1>Reset Link:</h1>
                 <br>
-                <button href='".$link."' style=''width: 100%;background-color: blue;padding: 10px 15px; border-radius:5px'>Reset Password</button> 
+                <a target='_blank' href='".$link."' style=''width: 100%;background-color: blue;padding: 10px 15px; border-radius:5px;'>Reset Password</a> 
             </div>
             ";
             // send email function to be called here
