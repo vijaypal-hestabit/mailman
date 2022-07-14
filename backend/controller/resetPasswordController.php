@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 include_once 'connection.php';
 include 'mail.php';
 $base_url;
@@ -34,15 +31,15 @@ class ResetPasswordController{
             <div style='width: 100%'>
                 <h1>Reset Link:</h1>
                 <br>
-                <a href='".$link."' style=''width: 100%;background-color: blue'>Reset Password</a> 
+                <button href='".$link."' style=''width: 100%;background-color: blue;padding: 10px 15px; border-radius:5px'>Reset Password</button> 
             </div>
             ";
             // send email function to be called here
             send_mail($msg, $subject, $email, $res['name']);
-            echo  "<h2>Link generated successfully. Please check your registered backup email address. Check here for <a href='https://mail.google.com/'>check gmail.</a></h2>";
+            echo json_encode(array('status'=>true));
 
         }else{
-            echo "<h2>Link generating failed. Please check your registered email address or user ID. Check here for <a href='../forgot.php'>forgot password.</a></h2>";
+            echo json_encode(array('status'=>false));
         }
     }
     public function verify_reset_hash($code,$email)

@@ -3,11 +3,9 @@
     grid-template-columns: auto !important;
     row-gap: 10px;
   }
-
   .register_wrapper .register_body .register_pass input[type=password] {
     width: 90% !important;
   }
-
   .image_section {
     grid-template-columns: auto auto !important;
   }
@@ -16,11 +14,9 @@
   .sign_in {
     margin-right: 0px !important;
   }
-
   .sm-hide {
     display: none;
   }
-
   .register_body .image_section {
     grid-template-columns: auto !important;
   }
@@ -30,7 +26,6 @@
   .register_body .image_section > div:nth-child(2) {
     order: 1;
   }
-
   nav > div > .grid {
     grid-template-columns: auto auto !important;
     column-gap: 8px !important;

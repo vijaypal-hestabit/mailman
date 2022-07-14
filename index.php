@@ -22,8 +22,8 @@ if (isset($_SESSION['user_id'])) {
                         <div id="signup_success" class="d-none">
                             <h4>Login successuflly.</h4>
                         </div>
-                        <div class="error" id="user_err"></div>
                         <div class="login_content mt-2">
+                            <div class="error" id="user_err"></div>
                             <input type="text" name="log_user_name" id="log_user_name" placeholder="Email/username" required>
                             <div class="error" id="password_err"></div>
                             <input type="password" name="log_password" class="password" id="log_password" placeholder="Password" required>
@@ -32,7 +32,7 @@ if (isset($_SESSION['user_id'])) {
                                     <a href="forgot.php">Forgot password?</a>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline-dark sign_in login_shadow" id="log_in">Sing-in</button>
+                                    <button class="btn btn-outline-dark sign_in login_shadow" id="log_in">Sign-in</button>
                                 </div>
                             </div>
                             <h3 class="mt-2">Don't have an account yet?</h3>
@@ -71,7 +71,7 @@ if (isset($_SESSION['user_id'])) {
                     $("#login_success").removeClass('d-none');
                     window.location.replace('dashboard.php');
                 } else if (response.login == false) {
-                    $('#user_err').html('Invalid Cadential.');
+                    $('#user_err').html('Invalid Credentials.');
                 } else {
 
                     // user name 

@@ -27,9 +27,10 @@
                         <div>
                             <div class="register_item4">
                                 <figure>
-                                    <img src="images/avatar.png" alt="profile image">
+                                    <img src="images/avatar.png" alt="profile image" id="profile_preview">
                                     <div>
-                                        <input class="custom-file-input" type="file" id="profile_pic">
+                                        <label for="profile_pic" class="btn-link">Upload Picture</label>
+                                        <input class="custom-file-input" type="file" id="profile_pic" accept="image/*" hidden>
                                         <div class="error" id="profile_err"></div>
                                     </div>
                                 </figure>
@@ -44,7 +45,7 @@
                         <div class="mail_sufix">@mailman.com</div>
                     </div>
                     <div class="register_item6">
-                        <input type="email" v-model="recovery_email" id="recovery_email" placeholder="Enter your recovery email">
+                        <input type="text" v-model="recovery_email" id="recovery_email" placeholder="Enter your recovery email">
                         <div class="error" id="recovery_email_err"></div>
                     </div>
                     <div class="register_pass">
@@ -86,12 +87,12 @@
                 this.l_name = "",
                 this.user_name = "",
                 this.email = "",
-                this.user_name = "",
                 this.recovery_email = "",
                 this.password = "",
                 this.cpassword = ""
         },
         methods: {
+
             sign_up: function(event) {
                 var profile_picture = document.getElementById('profile_pic')
                 var formData = new FormData();
@@ -174,22 +175,51 @@
         },
     })
 
+    // set image preview
+    profile_pic.onchange = evt => {
+        const [file] = profile_pic.files
+        if (file) {
+            profile_preview.src = URL.createObjectURL(file)
+        }
+    }
+
+
+    // // register button enable disable
+    $('#terms').attr('disabled', 'disabled');
+
+    $('input').change(function() {
+        var f_name = $('#f_name').val();
+        var user_name = $('#user_name').val();
+        var email = $('#email').val();
+        var recovery_email = $('#recovery_email').val();
+        var password = $('#password').val();
+        var cpassword = $('#cpassword').val();
+        if (f_name == '' || user_name == '' || email == '' || recovery_email == '' || password == '' || cpassword == '' ) {
+            $('#terms').prop('checked', false); 
+            $('#terms').attr('disabled', 'disabled');
+            $('#sign_up').attr('disabled', 'disabled');
+            $('#terms').prop('title','Please fill above details.');
+        }else{
+            $('#terms').removeAttr('disabled');
+            $('#terms').prop('title','');
+        }
+    });
     // check terms and condition checked or not
     $('#terms').click(function() {
-        if ($(this).prop('checked') == true) {
-            $('#sign_up').removeAttr('disabled');
-        } else {
+        if ($(this).prop('checked') == false) {
             $('#sign_up').attr('disabled', 'disabled');
+        } else {
+            $('#sign_up').removeAttr('disabled');
         }
     });
-    $('#sign_in').click(function(e) {
-        e.preventDefault();
+    // $('#sign_in').click(function(e) {
+    //     e.preventDefault();
 
-        setTimeout(loginTimeout(), 2000);
+    //     setTimeout(loginTimeout(), 2000);
 
-        function loginTimeout() {
-            window.location.replace('index.php');
-        }
-    });
+    //     function loginTimeout() {
+    //         window.location.replace('index.php');
+    //     }
+    // });
 </script>
 <?php include_once 'footer.php'; ?>

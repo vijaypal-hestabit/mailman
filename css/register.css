@@ -11,7 +11,8 @@
   text-align: center;
 }
 .register_wrapper .register_body .grid .register_item4 img {
-  width: 150px;
+  width: auto;
+  max-height: 165px;
 }
 .register_wrapper .register_body .grid .register_item4 .custom-file-input::-webkit-file-upload-button {
   display: none;

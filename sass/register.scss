@@ -15,7 +15,8 @@ $theme_color : #3a3a3a;
                 text-align: center;
 
                 img {
-                    width: 150px;
+                    width: auto;
+                    max-height: 165px;
                 }
 
                 .custom-file-input::-webkit-file-upload-button {

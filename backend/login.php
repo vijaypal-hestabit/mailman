@@ -1,6 +1,5 @@
 <?php
 
-// echo "ffffff";
 use validator\validator;
 include "validator.php";
 include "process.php";
