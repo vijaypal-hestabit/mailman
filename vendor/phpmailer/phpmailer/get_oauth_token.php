@@ -1,9 +1,5 @@
 <?php
-namespace PHPMailer\PHPMailer;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5.5
@@ -34,6 +30,7 @@ error_reporting(E_ALL);
  * revoke access to your app and run the script again.
  */
 
+namespace PHPMailer\PHPMailer;
 
 /**
  * Aliases for League Provider Classes
@@ -73,7 +70,7 @@ if (!isset($_GET['code']) && !isset($_POST['provider'])) {
     exit;
 }
 
-require '../../autoload.php';
+require 'vendor/autoload.php';
 
 session_start();
 
