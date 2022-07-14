@@ -40,9 +40,9 @@
                     <div class="grid">
                         <div class="register_item5">
                             <input type="text" v-model="email" id="email" placeholder="Enter your email">
-                            <div class="error" id="email_err"></div>
                         </div>
                         <div class="mail_sufix">@mailman.com</div>
+                        <div class="error" id="email_err"></div>
                     </div>
                     <div class="register_item6">
                         <input type="text" v-model="recovery_email" id="recovery_email" placeholder="Enter your recovery email">
@@ -118,6 +118,12 @@
                         // register successfully
                         if (response.signup == true) {
                             $("#signup_success").removeClass('d-none');
+
+                            setTimeout(function () {
+                                window.location.replace('index.php');
+                            }, 2000);
+
+                            
                         } else {
                             if (response.fname.fname_error) {
                                 $('#fname_err').html(response.fname.fname_error)
@@ -187,21 +193,21 @@
     // // register button enable disable
     $('#terms').attr('disabled', 'disabled');
 
-    $('input').change(function() {
+    $('input').keyup(function() {
         var f_name = $('#f_name').val();
         var user_name = $('#user_name').val();
         var email = $('#email').val();
         var recovery_email = $('#recovery_email').val();
         var password = $('#password').val();
         var cpassword = $('#cpassword').val();
-        if (f_name == '' || user_name == '' || email == '' || recovery_email == '' || password == '' || cpassword == '' ) {
-            $('#terms').prop('checked', false); 
+        if (f_name == '' || user_name == '' || email == '' || recovery_email == '' || password == '' || cpassword == '') {
+            $('#terms').prop('checked', false);
             $('#terms').attr('disabled', 'disabled');
             $('#sign_up').attr('disabled', 'disabled');
-            $('#terms').prop('title','Please fill above details.');
-        }else{
+            $('#terms').prop('title', 'Please fill above details.');
+        } else {
             $('#terms').removeAttr('disabled');
-            $('#terms').prop('title','');
+            $('#terms').prop('title', '');
         }
     });
     // check terms and condition checked or not
@@ -212,14 +218,10 @@
             $('#sign_up').removeAttr('disabled');
         }
     });
-    // $('#sign_in').click(function(e) {
-    //     e.preventDefault();
+    $('#sign_in').click(function(e) {
+        e.preventDefault();
 
-    //     setTimeout(loginTimeout(), 2000);
-
-    //     function loginTimeout() {
-    //         window.location.replace('index.php');
-    //     }
-    // });
+        window.location.replace('index.php');
+    });
 </script>
 <?php include_once 'footer.php'; ?>

@@ -3,8 +3,17 @@
     grid-template-columns: auto !important;
     row-gap: 10px;
   }
+  .register_wrapper .register_body .mail_sufix {
+    margin-top: -20px !important;
+  }
   .register_wrapper .register_body .register_pass input[type=password] {
-    width: 90% !important;
+    width: 87% !important;
+  }
+  .register_wrapper .register_body .register_item9 {
+    text-align: center;
+  }
+  .register_wrapper .register_body .register_item9 button {
+    margin-bottom: 15px !important;
   }
   .image_section {
     grid-template-columns: auto auto !important;
