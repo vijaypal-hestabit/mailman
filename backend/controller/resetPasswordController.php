@@ -4,19 +4,21 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include_once 'connection.php';
 include 'mail.php';
+$base_url;
 class ResetPasswordController{
-
+    
     public function __construct(){
         $this->db = new dbConnection();
     }
-
+    
     public function reset_link($email)
     {
+        global $base_url;
         $resetcode = mysqli_real_escape_string($this->db->conn,md5(time()));
 
         $sql = "UPDATE users set reset_link='{$resetcode}' where email='$email' or user_name = '$email'";
         $res=$this->db->conn->query($sql);
-        $resetlink="../../reset_password.php?reset_code=".$resetcode."&unique_id=".base64_encode($email);
+        $resetlink="{$base_url}reset_password.php?reset_code=".$resetcode."&unique_id=".base64_encode($email);
         return $resetlink;
     }
 
