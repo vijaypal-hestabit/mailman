@@ -24,7 +24,7 @@ if ($_SERVER['HTTP_HOST'] == 'localhost') {
         }
     }
 } else {
-    $base_url = $_SERVER['HTTP_ORIGIN'].'/tse/hbmail/';
+    $base_url = $_SERVER['HTTP_ORIGIN'].'/tse/mailman/';
     class dbConnection
     {
         private $host = 'localhost';
