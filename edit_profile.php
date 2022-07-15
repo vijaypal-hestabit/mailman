@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id'])) {
                 }
             });
         });
-        $('#edit_profile').click(function(e) {
+        $('document').on('click','#edit_profile',function(e) {
             var f_name = $("#edit_f_name").val();
             var l_name = $("#edit_l_name").val();
             var r_mail = $("#edit_r_mail").val();
@@ -132,6 +132,7 @@ if (isset($_SESSION['user_id'])) {
                 },
                 complete:function(){
                     $('.updating_btn').html('<button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>')
+                    location.reload()
                 }
             })
 
