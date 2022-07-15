@@ -22,7 +22,10 @@ if (isset($_SESSION['user_id'])) {
                             <div class="error" id="recovery_email_err"></div>
                             <div class="d-flex justify-content-end mt-2">
                                 <div class="float-right updating_btn">
-                                    <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>
+                                    <div class="spinner-grow text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span> Please Wait ...
+                                    </div>
+                                    <!-- <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button> -->
                                 </div>
                             </div>
                         </div>
@@ -67,10 +70,10 @@ if (isset($_SESSION['user_id'])) {
                 }
             });
         });
-        $('#edit_prifile_pic').change(function (e) { 
+        $('#edit_prifile_pic').change(function(e) {
             $('#profile_err').html('')
         });
-        $(document).on('click','#edit_profile',function(e) {
+        $(document).on('click', '#edit_profile', function(e) {
             var f_name = $("#edit_f_name").val();
             var l_name = $("#edit_l_name").val();
             var r_mail = $("#edit_r_mail").val();
@@ -96,14 +99,10 @@ if (isset($_SESSION['user_id'])) {
                     var html = '<div class="spinner-grow text-primary" role="status">' +
                         '<span class="visually-hidden">Loading...</span> Please Wait ...' +
                         '</div>';
-                        $('.updating_btn').html(html);
+                    $('.updating_btn').html(html);
 
                 },
                 success: function(response) {
-                    html = '<div class="spinner-grow text-primary" role="status">' +
-                        '<span class="visually-hidden">Loading...</span> Please Wait ...' +
-                        '</div>';
-                        $('.updating_btn').html(html);
                     // register successfully
                     if (response.edit_profile == true) {
                         $("#edit_success").removeClass('d-none');
@@ -136,8 +135,8 @@ if (isset($_SESSION['user_id'])) {
                         }
                     }
                 },
-                complete:function(){
-                    // $('.updating_btn').html('<button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>')
+                complete: function() {
+                    $('.updating_btn').html('<button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>')
                 }
             })
 
