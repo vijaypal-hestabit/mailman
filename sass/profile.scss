@@ -16,7 +16,7 @@ $theme_color : #3a3a3a;
 
             .profile_shadow {
                 border: 3px solid $theme_color;
-                box-shadow: 4px 4px $theme_color !important;
+                box-shadow: 4px 4px $theme_color  !important;
             }
 
             .create_shadow {
@@ -25,10 +25,12 @@ $theme_color : #3a3a3a;
             }
         }
     }
-    .edit_profile{
-        img{
-            max-width: 400px !important;
+
+    .edit_profile {
+        img {
+            margin-top: 40px;
+            width: auto !important;
+            max-height: 500px;
         }
     }
 }
-

@@ -47,6 +47,7 @@ input[type=date] {
 }
 .navbar .profile_image img {
   width: 47px;
+  height: 47px;
   cursor: pointer;
 }
 

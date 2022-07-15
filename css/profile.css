@@ -20,5 +20,7 @@
   box-shadow: 3px 3px #0d6efd !important;
 }
 .profile .grid .edit_profile img {
-  max-width: 400px !important;
+  margin-top: 40px;
+  width: auto !important;
+  max-height: 500px;
 }/*# sourceMappingURL=profile.css.map */

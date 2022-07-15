@@ -47,7 +47,7 @@ session_start();
                         <?php
                         if (!empty($_SESSION['profile_pic'])) {
                         ?>
-                            <img src="images/profile_pic/<?php echo $_SESSION['profile_pic'] ?>" alt="profile image">
+                            <img class="rounded-circle" src="images/profile_pic/<?php echo $_SESSION['profile_pic'] ?>" alt="profile image">
                         <?php
                         } else {
                         ?>
