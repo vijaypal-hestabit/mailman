@@ -94,7 +94,7 @@ if (isset($_SESSION['user_id'])) {
                 type: 'POST',
                 beforeSend: function() {
                     var html = '<button class="btn btn-primary" type="button" disabled>' +
-                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please Wait...' +
+                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please Wait...' +
                         '</button>';
                     $('.updating_btn').html(html);
 
