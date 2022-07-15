@@ -105,7 +105,7 @@ class validator
         $file_size = $file['size'];
         $file_type =  pathinfo($file['name'])['extension'];
         if ($file_size > $size) { // Check file size
-            $message = "Sorry, your file is too large.";
+            $message = "Sorry, your file is too large.File should be less than ".$size/(1024*1024)."MB";
             $response = 0;
         } else if (!in_array($file_type,$allowedExtensions)) { // Allow certain file formats
             $message = "Sorry, only JPG and PNG files are allowed.";

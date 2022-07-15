@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
                             <input type="email" name="edit_r_mail" class="r_mail" id="edit_r_mail" placeholder="Recovery Email">
                             <div class="error" id="recovery_email_err"></div>
                             <div class="d-flex justify-content-end mt-2">
-                                <div class="float-right">
+                                <div class="float-right updating_btn">
                                     <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>
                                 </div>
                             </div>
@@ -89,6 +89,13 @@ if (isset($_SESSION['user_id'])) {
                 contentType: false,
                 dataType: 'JSON',
                 type: 'POST',
+                beforeSend: function() {
+                    var html = '<div class="spinner-grow text-primary" role="status">' +
+                        '<span class="visually-hidden">Loading...</span>' +
+                        '</div>';
+                        $('.updating_btn').html(html);
+
+                },
                 success: function(response) {
                     console.log(response);
                     // register successfully
@@ -122,6 +129,9 @@ if (isset($_SESSION['user_id'])) {
                             $('#profile_err').html(response.profile_img.message)
                         }
                     }
+                },
+                done:function(){
+                    $('.updating_btn').html('<button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>')
                 }
             })
 
