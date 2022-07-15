@@ -100,6 +100,10 @@ if (isset($_SESSION['user_id'])) {
 
                 },
                 success: function(response) {
+                    html = '<div class="spinner-grow text-primary" role="status">' +
+                        '<span class="visually-hidden">Loading...</span> Please Wait ...' +
+                        '</div>';
+                        $('.updating_btn').html(html);
                     // register successfully
                     if (response.edit_profile == true) {
                         $("#edit_success").removeClass('d-none');
