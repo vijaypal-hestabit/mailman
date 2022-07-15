@@ -104,7 +104,6 @@ class editProfile extends CommonFunctions
             } else {
                 $_SESSION['profile_pic'] = $profile_img_name;
             }
-
             $edit_profile->edit_profile($fname, $lname, $profile_img_name, $recoveryemail, $user_id);
 
             echo json_encode(['edit_profile' => true]);
