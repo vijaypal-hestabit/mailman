@@ -59,7 +59,7 @@ if (isset($_SESSION['user_id'])) {
                     if (response['profile_pic']) {
                         profile_location = 'images/profile_pic/' + response['profile_pic'] + '';
                     } else {
-                        profile_location = "images/mail.png";
+                        profile_location = "assets/avatar.png";
                     }
                     console.log(profile_location)
                     var profile_pic = $('#show_profile_pic').attr("src", profile_location)
