@@ -67,6 +67,9 @@ if (isset($_SESSION['user_id'])) {
                 }
             });
         });
+        $('#edit_prifile_pic').change(function (e) { 
+            $('#profile_err').html('')
+        });
         $(document).on('click','#edit_profile',function(e) {
             var f_name = $("#edit_f_name").val();
             var l_name = $("#edit_l_name").val();
@@ -97,7 +100,6 @@ if (isset($_SESSION['user_id'])) {
 
                 },
                 success: function(response) {
-                    console.log(response);
                     // register successfully
                     if (response.edit_profile == true) {
                         $("#edit_success").removeClass('d-none');
