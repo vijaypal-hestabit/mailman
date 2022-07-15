@@ -4,7 +4,7 @@ if (isset($_SESSION['user_id'])) {
 
     include_once 'dashboard_header.php';
 ?>
-    <div class="profile col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <div class="profile px-md-4 py-4">
         <div class="container">
             <div class="grid mt-5">
                 <div class="d-grid align-items-center">

@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['user_id'])) {
 
     include_once 'dashboard_header.php';
+    include_once 'dashboard_header_sidebar.php';
 ?>
     <!-- show mail details -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">

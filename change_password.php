@@ -1,15 +1,18 @@
 <?php include_once 'dashboard_header.php'; ?>
-<div class="profile col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+<div class="profile px-md-4 py-4">
     <div class="container">
         <div class="grid mt-5">
             <div class="d-grid align-items-center">
                 <div class="profile_section">
                     <h2>Change Password</h2>
-                    <div class="error"></div>
+                    <div class="success_change text-success"></div>
                     <div class="profile_content mt-2">
-                        <input type="password" name="old_password" id="old_password" placeholder="Old password" autocomplete="off"><br>
+                        <input type="password" name="old_password" id="old_password" placeholder="Old password" autocomplete="off">
+                        <div class="error" id="old_pass_err"></div>
                         <input type="password" name="new_password" class="l_name" id="new_password" placeholder="New password">
+                        <div class="error" id="new_pass_err"></div>
                         <input type="password" name="c_password" class="r_mail" id="c_password" placeholder="Confirm new password">
+                        <div class="error" id="c_pass_err"></div>
                         <div class="d-flex justify-content-end mt-2">
                             <div class="float-right">
                                 <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>
@@ -46,10 +49,32 @@
             dataType: "json",
             success: function(response) {
                 if (response.status) {
-                    $('.error').text(response.message);
-                    $('.error').addClass('text-success');
+                    $('.success_change').text(response.message);
+                    setTimeout(function() {
+                        $('.success_change').text('');
+                    }, 2000);
+                    $('#c_pass_err').html('')
+                    $('#old_pass_err').html('')
+                    $('#new_pass_err').html('')
                 } else {
-                    $('.error').text(response.message);
+
+                    // set error message
+                    console.log(response.message)
+                    if (response.message == 'Please enter old password' || response.message == 'Please enter currect old password') {
+                        $('#old_pass_err').html(response.message)
+                    } else {
+                        $('#old_pass_err').html('')
+                    }
+                    if (response.message == 'Please enter new password') {
+                        $('#new_pass_err').html(response.message)
+                    } else {
+                        $('#new_pass_err').html('')
+                    }
+                    if (response.message == "Please Check You've Entered Or Confirmed Your Password!") {
+                        $('#c_pass_err').html(response.message)
+                    } else {
+                        $('#c_pass_err').html('')
+                    }
                 }
             }
         });
