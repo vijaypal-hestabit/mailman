@@ -22,10 +22,7 @@ if (isset($_SESSION['user_id'])) {
                             <div class="error" id="recovery_email_err"></div>
                             <div class="d-flex justify-content-end mt-2">
                                 <div class="float-right updating_btn">
-                                    <div class="spinner-grow text-primary" role="status">
-                                        <span class="visually-hidden">Loading...</span> Please Wait ...
-                                    </div>
-                                    <!-- <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button> -->
+                                    <button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -96,9 +93,9 @@ if (isset($_SESSION['user_id'])) {
                 dataType: 'JSON',
                 type: 'POST',
                 beforeSend: function() {
-                    var html = '<div class="spinner-grow text-primary" role="status">' +
-                        '<span class="visually-hidden">Loading...</span> Please Wait ...' +
-                        '</div>';
+                    var html = '<button class="btn btn-primary" type="button" disabled>' +
+                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please Wait...' +
+                        '</button>';
                     $('.updating_btn').html(html);
 
                 },
