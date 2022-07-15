@@ -45,7 +45,7 @@ session_start();
                 <div class="dropdown">
                     <div class="profile_image" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php
-                        if ($_SESSION['profile_pic']) {
+                        if (empty($_SESSION['profile_pic'])) {
                         ?>
                             <img src="images/profile_pic/<?php echo $_SESSION['profile_pic'] ?>" alt="profile image">
                         <?php
