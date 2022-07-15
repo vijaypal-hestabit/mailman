@@ -103,6 +103,9 @@ if (isset($_SESSION['user_id'])) {
                     // register successfully
                     if (response.edit_profile == true) {
                         $("#edit_success").removeClass('d-none');
+                        setTimeout(function() {
+                            window.location.replace('index.php');
+                        }, 2000);
                     } else {
                         if (response.fname.fname_error) {
                             $('#fname_err').html(response.fname.fname_error)
