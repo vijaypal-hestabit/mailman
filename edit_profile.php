@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id'])) {
                 }
             });
         });
-        $('document').on('click','#edit_profile',function(e) {
+        $(document).on('click','#edit_profile',function(e) {
             var f_name = $("#edit_f_name").val();
             var l_name = $("#edit_l_name").val();
             var r_mail = $("#edit_r_mail").val();
