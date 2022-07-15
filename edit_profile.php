@@ -132,7 +132,6 @@ if (isset($_SESSION['user_id'])) {
                 },
                 complete:function(){
                     $('.updating_btn').html('<button class="btn btn-outline-dark edit_profile profile_shadow" id="edit_profile">Submit</button>')
-                    location.reload()
                 }
             })
 
