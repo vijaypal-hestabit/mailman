@@ -2,6 +2,11 @@
   grid-template-columns: 50% 50%;
   column-gap: 30px;
 }
+.profile .grid #profile_imgage {
+  margin-top: 40px;
+  width: auto !important;
+  max-height: 500px;
+}
 .profile .grid .profile_section {
   border: 3px solid #3a3a3a;
   border-radius: 5px;
