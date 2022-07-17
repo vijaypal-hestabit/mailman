@@ -21,11 +21,7 @@ class LoginController
             $_SESSION['user_name'] = $data['first_name'];
             $_SESSION['user_id'] = $user_name;
             $_SESSION['id'] = $data['id'];
-            if ($data['profile_pic'] == null) {
-                $_SESSION['profile_pic'] = 'avatar.png';
-            } else {
-                $_SESSION['profile_pic'] = $data['profile_pic'];
-            }
+            $_SESSION['profile_pic'] = $data['profile_pic'];
             $_SESSION['email'] = $data['email'];
         } else {
             $responce = false;

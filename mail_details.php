@@ -1,14 +1,13 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-
     include_once 'dashboard_header.php';
     include_once 'dashboard_header_sidebar.php';
 ?>
     <!-- show mail details -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
         <div id="show_mail">
-            <h2>Subject :- <span id="subject"></span></h2>
+            <h3>Subject :- <span id="subject"></span></h3>
             <div class="row">
                 <div class="col-sm-6">
                     <a class="link-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Participants <span class="dropdown-toggle"></span></a>
@@ -19,18 +18,21 @@ if (isset($_SESSION['user_id'])) {
             </div>
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                    <div>From</div><span class="from_mail"></span>
-                    <div>To</div><span class="to_mail"></span>
-                    <div>CC</div><span class="cc_mail"></span>
-                    <div>BCC</div><span class="bcc_mail"></span>
+                    <div class="fw-bold">From</div><span class="from_mail"></span>
+                    <div class="fw-bold">To</div><span class="to_mail"></span>
+                    <div id="show_cc"></div>
+                    <div id="show_bcc"></div>
                 </div>
             </div>
+
+            <!-- show mail text -->
             <div id="mail_content" class="mt-4 border p-3 rounded"></div>
 
+            <!-- show attachments -->
             <div class="mt-4" id="attachments">
-
-
             </div>
+
+            <!-- reply buttons -->
             <div class="mt-4">
                 <button class="btn btn-hb mr-2" id="reply" @click="reply">Reply</button>
                 <button class="btn btn-hb" id="replyall">Reply all</button>
@@ -40,8 +42,6 @@ if (isset($_SESSION['user_id'])) {
 
     </div>
     </div>
-
-
     <!-- modal for compose mail-->
     <div class="modal fade" id="composeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -96,15 +96,13 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-
+    <!-- include footer -->
     <?php include_once 'dashboard_footer.php'; ?>
 <?php
 } else {
     header('location: index.php');
 }
-
 ?>
-
 
 <script>
     $(document).ready(function() {
@@ -122,8 +120,20 @@ if (isset($_SESSION['user_id'])) {
             // mail participentes details
             $('.from_mail').html(res.data.users[res.data.message_data[0]['sender_id']])
             $('.to_mail').html(res.data.users[res.data.message_data[0]['receiver_id']])
-            $('.cc_mail').html(res.data.users[res.data.message_data[0]['cc_receiver_id']])
-            $('.bcc_mail').html(res.data.users[res.data.message_data[0]['bcc_receiver_id']])
+
+            // append cc details
+            if (res.data.users[res.data.message_data[0]['cc_receiver_id']]) {
+                $('#show_cc').html('<div class="fw-bold">CC</div><span class="cc_mail">' + res.data.users[res.data.message_data[0]['cc_receiver_id']] + '</span>');
+            }else{
+                $('#show_cc').html('')
+            }
+
+            // append bcc details
+            if (res.data.users[res.data.message_data[0]['bcc_receiver_id']]) {
+                $('#show_bcc').html('<div class="fw-bold">BCC</div><span class="bcc_mail">' + res.data.users[res.data.message_data[0]['bcc_receiver_id']] + '</span>');
+            }else{
+                $('#show_bcc').html('')
+            }
 
             // get attachments
             var html = '<h5>Attachments</h5>';
@@ -134,18 +144,20 @@ if (isset($_SESSION['user_id'])) {
             $("#attachments").html(html)
         });
 
-        $('#reply').click(function (e) { 
+        $('#reply').click(function(e) {
             $('#composeModal').modal('show');
-            var to  = $('.from_mail').text()
+            var to = $('.from_mail').text()
             var subject = $("#subject").text();
             $('#mail_id').val(to);
             $('#subject_input').val(subject)
 
-            $('#mail_id').prop('readonly',true)
+            $('#mail_id').prop('readonly', true)
             $('#cc_label,#bcc_label').addClass('d-none')
         });
     });
 </script>
+
+<!-- vue js -->
 <script>
     var otable = "";
     var app = new Vue({
@@ -173,14 +185,14 @@ if (isset($_SESSION['user_id'])) {
             }
         },
         methods: {
-            reply :function(e){
-                var to  = $('.from_mail').text()
+            reply: function(e) {
+                var to = $('.from_mail').text()
                 var subject = $("#subject").text();
-                this.mail=to
-                this.subject=subject
+                this.mail = to
+                this.subject = subject
                 // $('#mail_id').val(to);
                 // $('#subject_input').val(subject)
-                
+
                 // $('#mail_id').prop('readonly',true)
                 $('#cc_label,#bcc_label').addClass('d-none')
                 $('#composeModal').modal('show');
