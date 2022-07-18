@@ -176,10 +176,13 @@ if (isset($_SESSION['user_id'])) {
                     }
                     var id = "";
                     axios.post('backend/compose_mail.php', data).then(res => {
-                        console.log(res['data'])
                         if (res['data'] == true) {
                             $('#composeModal').modal('hide');
-                            alert('email_sent')
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'Mail sent successfully',
+                            showConfirmButton: false,
+                            })
                         } else {
                             $('#message_error').html(res['data']['message']);
                         }
@@ -587,7 +590,9 @@ if (isset($_SESSION['user_id'])) {
             var message_id = $(this).closest('tr').attr('data_id');
         });
         $('#composeModal').on('hidden.bs.modal', function() {
-            location.reload()
+            setTimeout(() => {
+                location.reload()
+            }, 2000);
         });
     </script>
 
