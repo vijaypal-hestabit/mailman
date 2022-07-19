@@ -16,13 +16,13 @@ if (isset($_SESSION['user_id'])) {
                     <button type="button" class="d-none read_status" @click="mark_as_read">Mark read</button>
                 </span>
                 <span>
-                    <button type="button" class="d-none unread_status" @click="mark_as_unread">Mark unread</button>
+                    <button type="button" class="d-none unread_status btn btn-outline-primary" @click="mark_as_unread">Mark unread</button>
                 </span>
                 <span>
-                    <button type="button" class="d-none delete_status" @click="delete_message">Delete</button>
+                    <button type="button" class="d-none delete_status btn-outline-danger" @click="delete_message">Delete</button>
                 </span>
                 <span>
-                    <button type="button" class="d-none restore_status" @click="restore_message">Restore</button>
+                    <button type="button" class="d-none restore_status btn-outline-success" @click="restore_message">Restore</button>
                 </span>
             </div>
         </div>
@@ -94,7 +94,7 @@ if (isset($_SESSION['user_id'])) {
                         </label>
                         <div class="attachments w-100 d-grid">
                             <template v-for="(item,index) in attch_list">
-                                    <a :href="'images/mail_attachments/'+item.path">{{item.path}}</a>
+                                <a :href="'images/mail_attachments/'+item.path">{{item.path}}</a>
                             </template>
                         </div>
                         <div class="row">
@@ -121,6 +121,12 @@ if (isset($_SESSION['user_id'])) {
 
     <?php include_once 'dashboard_footer.php'; ?>
     <script>
+        // $(document).ready(function () {
+
+
+        // });
+
+
         var otable = "";
         var app = new Vue({
             el: "#main",
@@ -143,7 +149,7 @@ if (isset($_SESSION['user_id'])) {
                     page_name: "",
                     read_status: "",
                     selected: null,
-                    attch_list:null
+                    attch_list: null
                 }
             },
             methods: {
@@ -156,13 +162,13 @@ if (isset($_SESSION['user_id'])) {
                             'fetch_draft': true
                         }
                         axios.post('backend/compose_mail.php', data).then(res => {
-                            this.inbox_id=res['data']['message_data'][0]['id']
+                            this.inbox_id = res['data']['message_data'][0]['id']
                             this.cc_mail = res['data']['users'][res['data']['message_data'][0]['cc_receiver_id']]
                             this.bcc_mail = res['data']['users'][res['data']['message_data'][0]['bcc_receiver_id']]
                             this.mail = res['data']['users'][res['data']['message_data'][0]['receiver_id']]
                             this.subject = res['data']['message_data'][0]['short_subject_msg']
                             this.message = res['data']['message_data'][0]['full_message']
-                            this.attch_list=res['data']['attachments']
+                            this.attch_list = res['data']['attachments']
                             $("#composeModal").modal('show')
                         })
                     }
@@ -179,9 +185,9 @@ if (isset($_SESSION['user_id'])) {
                         if (res['data'] == true) {
                             $('#composeModal').modal('hide');
                             Swal.fire({
-                            icon: 'success',
-                            title: 'Mail sent successfully',
-                            showConfirmButton: false,
+                                icon: 'success',
+                                title: 'Mail sent successfully',
+                                showConfirmButton: false,
                             })
                         } else {
                             $('#message_error').html(res['data']['message']);
@@ -293,10 +299,10 @@ if (isset($_SESSION['user_id'])) {
                     }).then(res => {
                         if (res['data']['inbox_id']) {
                             this.inbox_id = res['data']['inbox_id']
-                            this.attch_list=res['data']['attachments']
+                            this.attch_list = res['data']['attachments']
                         }
                         if (!res['data']['response']) {
-                            this.attch_list=res['data']['attahcments']
+                            this.attch_list = res['data']['attahcments']
                             this.email_error = res['data']['message']
                         }
                     })
@@ -322,7 +328,7 @@ if (isset($_SESSION['user_id'])) {
                     this.$nextTick(function() {
                         this.refresh(data)
                     })
-
+                    this.hidebtns();
                 },
                 open_inbox: function(event) {
                     this.page_name = "Inbox"
@@ -343,6 +349,7 @@ if (isset($_SESSION['user_id'])) {
                     this.$nextTick(function() {
                         this.refresh(data)
                     })
+                    this.hidebtns();
 
                 },
                 open_draft: function(event) {
@@ -363,7 +370,7 @@ if (isset($_SESSION['user_id'])) {
                     this.$nextTick(function() {
                         this.refresh(data)
                     })
-
+                    this.hidebtns();
                 },
                 open_trash: function(event) {
                     this.page_name = "Trash"
@@ -378,10 +385,8 @@ if (isset($_SESSION['user_id'])) {
                     }
                     this.inbox_contents = []
                     $('#inbox_table').DataTable().clear().destroy();
-                    // this.$nextTick(function() {
                     this.refresh(data)
-                    // })
-
+                    this.hidebtns();
                 },
                 refresh: function(data) {
                     axios.post('backend/inbox.php', data).then(res => {
@@ -397,22 +402,22 @@ if (isset($_SESSION['user_id'])) {
                     })
                 },
                 selectall: function(event) {
-                    // var page_name = $('.card-header').html()
+
+                    var data_rows = $('tr[data_id]').length;
+                    if (data_rows == 0) {
+                        $("#selectAll").prop('checked',false)
+                        $("#selectAll").prop('title','No data available')
+                        this.hidebtns();
+                    }
 
                     if (this.page_name == 'Inbox') { // for inbox page
-
                         if ($("#selectAll").prop('checked') == true) {
-
                             var ind_check = $('.checkboxs').prop('checked', true)
-
-
                             var checked_all_array = [];
 
                             $("input[name=action]:checked").each(function() {
                                 checked_all_array.push($(this).val());
                             });
-
-                            // console.log(checked_all_array)
 
                             $('.read_status, .unread_status, .delete_status').removeClass('d-none');
                             this.selected = checked_all_array
@@ -464,11 +469,22 @@ if (isset($_SESSION['user_id'])) {
                     }
                 },
                 single_select: function(event) {
+
+                    
                     var checked_all_array = [];
 
                     $("input[name=action]:checked").each(function() {
                         checked_all_array.push($(this).val());
                     });
+
+                    // select all selector checkbox if all single selector checked
+                    var rows = $('tr[data_id]').length;
+                    if (checked_all_array.length == rows) {
+                        $("#selectAll").prop('checked',true)
+                    }else{
+                        $("#selectAll").prop('checked',false)
+                    }
+
 
                     if (this.page_name == 'Inbox') {
                         if (checked_all_array.length === 0) {
@@ -490,6 +506,10 @@ if (isset($_SESSION['user_id'])) {
                         }
                     }
                     this.selected = checked_all_array;
+                },
+                hidebtns: function() {
+                    $('.read_status, .unread_status, .delete_status, .restore_status').addClass('d-none');
+                    $("#selectAll").prop('checked', false)
                 },
                 mark_as_read: function(event) {
                     var data = {

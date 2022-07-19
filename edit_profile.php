@@ -32,7 +32,7 @@ if (isset($_SESSION['user_id'])) {
                     <figure>
                         <img class="w-100" src="#" alt="mail image" id="show_profile_pic">
                     </figure>
-                    <label class="mt-3 btn-link" for="edit_prifile_pic">Edit Profile</label>
+                    <label class="mt-3 btn-link cursor-pointer" for="edit_prifile_pic">Edit Profile</label>
                     <input type="file" name="edit_prifile_pic" id="edit_prifile_pic" hidden>
                     <div class="error" id="profile_err"></div>
                 </div>
