@@ -14,10 +14,13 @@ if (isset($_SESSION['user_id'])) {
                             <div id="edit_success" class="d-none">
                                 <h4 class="text-success">Profile chage successfully.</h4>
                             </div>
+                            <div>First Name</div>
                             <input type="text" name="edit_f_name" id="edit_f_name" placeholder="First Name">
                             <div class="error" id="fname_err"></div>
+                            <div>Last Name</div>
                             <input type="text" name="edit_l_name" class="l_name" id="edit_l_name" placeholder="Last Name">
                             <div class="error" id="lname_err"></div>
+                            <div>Recovery Email</div>
                             <input type="email" name="edit_r_mail" class="r_mail" id="edit_r_mail" placeholder="Recovery Email">
                             <div class="error" id="recovery_email_err"></div>
                             <div class="d-flex justify-content-end mt-2">
