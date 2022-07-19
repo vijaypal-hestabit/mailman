@@ -46,7 +46,6 @@ if (isset($_SESSION['user_id'])) {
                     $('#email').val(response.email);
                     $('#backup_email').val(response.backup_mail);
                     $('#username').val(response.user_name);
-                    console.log(response.profile_pic);
                     if (response.profile_pic != '') {
                         $('#profile_imgage').attr('src', 'images/profile_pic/' + response.profile_pic);
                     } else {

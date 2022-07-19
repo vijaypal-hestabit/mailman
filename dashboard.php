@@ -13,16 +13,16 @@ if (isset($_SESSION['user_id'])) {
                     <input type="checkbox" name="" title="select all" class="selectAll" id="selectAll" @change="selectall">
                 </span>
                 <span>
-                    <button type="button" class="d-none read_status" @click="mark_as_read">Mark read</button>
+                    <button type="button" class="d-none read_status btn btn btn-outline-secondary" @click="mark_as_read">Mark read</button>
                 </span>
                 <span>
                     <button type="button" class="d-none unread_status btn btn-outline-primary" @click="mark_as_unread">Mark unread</button>
                 </span>
                 <span>
-                    <button type="button" class="d-none delete_status btn-outline-danger" @click="delete_message">Delete</button>
+                    <button type="button" class="d-none delete_status btn btn-outline-danger" @click="delete_message">Delete</button>
                 </span>
                 <span>
-                    <button type="button" class="d-none restore_status btn-outline-success" @click="restore_message">Restore</button>
+                    <button type="button" class="d-none restore_status btn btn-outline-success" @click="restore_message">Restore</button>
                 </span>
             </div>
         </div>
@@ -121,12 +121,6 @@ if (isset($_SESSION['user_id'])) {
 
     <?php include_once 'dashboard_footer.php'; ?>
     <script>
-        // $(document).ready(function () {
-
-
-        // });
-
-
         var otable = "";
         var app = new Vue({
             el: "#main",
@@ -154,7 +148,7 @@ if (isset($_SESSION['user_id'])) {
             },
             methods: {
                 navigate: function(id) {
-                    if (this.page_name == 'Inbox') {
+                    if (this.page_name == 'Inbox' || this.page_name == 'Sent') {
                         location.href = "mail_details.php?id=" + id
                     } else if (this.page_name == 'Draft') {
                         var data = {

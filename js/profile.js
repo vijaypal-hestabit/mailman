@@ -6,7 +6,6 @@ $(document).ready(function() {
         dataType: "json",
         success: function(response) {
 
-            console.log(response);
             $('#user_name').val(response.first_name + ' ' + response.last_name);
             $('#email').val(response.email);
             $('#backup_email').val(response.backup_mail);

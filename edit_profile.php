@@ -51,7 +51,6 @@ if (isset($_SESSION['user_id'])) {
                 },
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
                     var f_name = $("#edit_f_name").val(response['first_name']);
                     var l_name = $("#edit_l_name").val(response['last_name']);
                     var r_mail = $("#edit_r_mail").val(response['backup_mail']);
@@ -61,7 +60,6 @@ if (isset($_SESSION['user_id'])) {
                     } else {
                         profile_location = "assets/avatar.png";
                     }
-                    console.log(profile_location)
                     var profile_pic = $('#show_profile_pic').attr("src", profile_location)
 
                 }

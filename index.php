@@ -66,7 +66,6 @@ if (isset($_SESSION['user_id'])) {
             contentType: false,
             dataType: "json",
             success: function(response) {
-                console.log(response);
                 if (response.login == true) {
                     $("#login_success").removeClass('d-none');
                     window.location.replace('dashboard.php');

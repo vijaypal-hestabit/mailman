@@ -59,7 +59,6 @@
                 } else {
 
                     // set error message
-                    console.log(response.message)
                     if (response.message == 'Please enter old password' || response.message == 'Please enter currect old password') {
                         $('#old_pass_err').html(response.message)
                     } else {

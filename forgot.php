@@ -54,7 +54,6 @@
                     $('#mail_error').html("Please wait ...");
                 },
                 success: function (response) {
-                    console.log(response)
 
                     if (response['status']) {
                         $('#mail_error').addClass('text-success');
