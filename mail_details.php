@@ -124,14 +124,14 @@ if (isset($_SESSION['user_id'])) {
             // append cc details
             if (res.data.users[res.data.message_data[0]['cc_receiver_id']]) {
                 $('#show_cc').html('<div class="fw-bold">CC</div><span class="cc_mail">' + res.data.users[res.data.message_data[0]['cc_receiver_id']] + '</span>');
-            }else{
+            } else {
                 $('#show_cc').html('')
             }
 
             // append bcc details
             if (res.data.users[res.data.message_data[0]['bcc_receiver_id']]) {
                 $('#show_bcc').html('<div class="fw-bold">BCC</div><span class="bcc_mail">' + res.data.users[res.data.message_data[0]['bcc_receiver_id']] + '</span>');
-            }else{
+            } else {
                 $('#show_bcc').html('')
             }
 
@@ -144,16 +144,16 @@ if (isset($_SESSION['user_id'])) {
             $("#attachments").html(html)
         });
 
-        $('#reply').click(function(e) {
-            $('#composeModal').modal('show');
-            var to = $('.from_mail').text()
-            var subject = $("#subject").text();
-            $('#mail_id').val(to);
-            $('#subject_input').val(subject)
+        // $('#reply').click(function(e) {
+        //     $('#composeModal').modal('show');
+        //     var to = $('.from_mail').text()
+        //     var subject = $("#subject").text();
+        //     $('#mail_id').val(to);
+        //     $('#subject_input').val(subject)
 
-            $('#mail_id').prop('readonly', true)
-            $('#cc_label,#bcc_label').addClass('d-none')
-        });
+        //     $('#mail_id').prop('readonly', true)
+        //     $('#cc_label,#bcc_label').addClass('d-none')
+        // });
     });
 </script>
 
@@ -188,14 +188,18 @@ if (isset($_SESSION['user_id'])) {
             reply: function(e) {
                 var to = $('.from_mail').text()
                 var subject = $("#subject").text();
+                $('#mail_id').val(to);
+                $('#subject_input').val(subject)
+
+                $('#mail_id').prop('readonly', true)
+                $('#cc_label,#bcc_label').addClass('d-none')
                 this.mail = to
                 this.subject = subject
-                // $('#mail_id').val(to);
-                // $('#subject_input').val(subject)
-
-                // $('#mail_id').prop('readonly',true)
-                $('#cc_label,#bcc_label').addClass('d-none')
                 $('#composeModal').modal('show');
+                this.make_draft()
+                this.$nextTick(function() {
+                    this.save_subject()
+                })
             },
             navigate: function(id) {
                 if (this.page_name == 'Inbox') {
@@ -224,10 +228,11 @@ if (isset($_SESSION['user_id'])) {
                     'to_message': this.message,
                     'send_mail': true
                 }
+
                 var id = "";
                 axios.post('backend/compose_mail.php', data).then(res => {
                     if (res['data'] == true) {
-                        $('#composeModal').modal('hide');
+                        // $('#composeModal').modal('hide');
                         alert('email_sent')
                     } else {
                         $('#message_error').html(res['data']['message']);
@@ -240,7 +245,6 @@ if (isset($_SESSION['user_id'])) {
                         res['data']['variable'] = res['data']['message']
                     }
                 })
-                this.make_draft
             },
             make_draft: function() {
 
@@ -294,7 +298,6 @@ if (isset($_SESSION['user_id'])) {
                 })
             },
             save_subject: function(update_fields) {
-
                 var data = {
                     'user_id': "<?php echo $_SESSION['id'] ?>",
                     'subject': this.subject,
