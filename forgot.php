@@ -9,9 +9,9 @@
             <div class="forgot_section">
                 <h2>Enter your Username or Mailman Id</h2>
                 <?php
-                    if (isset($_GET['error'])) {
-                        echo "<h4 class='error'>".$_GET['error']."</h4>";
-                    }
+                if (isset($_GET['error'])) {
+                    echo "<h4 class='error'>" . $_GET['error'] . "</h4>";
+                }
                 ?>
                 <div class="forgot_content mt-2">
                     <input type="text" name="forgot_user_name" id="forgot_user_name" placeholder="abc@mailman.com">
@@ -32,42 +32,48 @@
                 <img class="w-100" src="images/mail.png" alt="mail image">
             </figure>
         </div>
-</form>
+    </form>
 </div>
 
 <?php include_once 'footer.php'; ?>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        $('#sign_in').click(function(e){
+        $('#sign_in').click(function(e) {
             e.preventDefault()
-            FormData = {'forgot_user_name' : $("#forgot_user_name").val()}
+            FormData = {
+                'forgot_user_name': $("#forgot_user_name").val()
+            }
             $.ajax({
                 type: "post",
                 url: "backend/forget.php",
                 data: FormData,
                 dataType: "json",
-                beforeSend: function(){
+                beforeSend: function() {
                     $('#mail_error').addClass('text-warning');
                     $('#mail_error').removeClass('text-success');
                     $('#mail_error').removeClass('text-danger');
                     $('#mail_error').html("Please wait ...");
+                    setTimeout(function() {
+                        $('#mail_error').html("We are facing some technical issue, Please try after some time.");
+                        $('#mail_error').addClass('text-danger');
+                    }, 15000);
                 },
-                success: function (response) {
+                success: function(response) {
 
                     if (response['status']) {
                         $('#mail_error').addClass('text-success');
                         $('#mail_error').removeClass('text-danger');
                         $('#mail_error').removeClass('text-warning');
                         $('#mail_error').html("Link generated successfully. Please check your registered backup email address. Check here for <a href='https://mail.google.com/'>check gmail.</a></h2>");
-                        }else{
+                    } else {
                         $('#mail_error').removeClass('text-success');
                         $('#mail_error').removeClass('text-warning');
                         $('#mail_error').addClass('text-danger');
                         $('#mail_error').html("Link generating failed. Please check your username or mailman address.");
                     }
-                    
-                // echo "<h2></h2>";
+
+                    // echo "<h2></h2>";
 
                 }
             });
