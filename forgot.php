@@ -14,7 +14,7 @@
                 }
                 ?>
                 <div class="forgot_content mt-2">
-                    <input type="text" name="forgot_user_name" id="forgot_user_name" placeholder="abc@mailman.com">
+                    <input type="text" name="forgot_user_name" id="forgot_user_name" placeholder="username/abc@mailman.com">
                     <div id="mail_error"></div>
                     <div class="d-flex justify-content-between mt-2">
                         <div>

@@ -1,9 +1,9 @@
 
 
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 /**
  * This example shows how to send via Google's Gmail servers using XOAUTH2 authentication
  * using the league/oauth2-client to provide the OAuth2 token.
@@ -68,7 +68,7 @@ function send_mail($msg, $subject, $reciver_email, $reciverName)
 
     //Obtained by configuring and running get_oauth_token.php
     //after setting up an app in Google Developer Console.
-    $refreshToken = '1//0gb2JE-YiFR4ICgYIARAAGBASNwF-L9IrTlac75RCJvVqFTy0bJ_qPsDKnW93lDylnLOpb9BreYVD2L7Gk0wrRw5erUuuRcPNmQw';
+    $refreshToken = '1//0gMnwc6Y6ZC_tCgYIARAAGBASNwF-L9Ir862fQDeT4_3qnZaNZ8JES3GZ5uMRC7i03kjxa5oaruqjFDra1IPGWziYAQdrhfa9uGg';
 
     //Create a new OAuth2 provider instance
     $provider = new Google(
