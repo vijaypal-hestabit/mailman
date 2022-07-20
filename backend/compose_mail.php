@@ -68,7 +68,7 @@ class compose extends CommonFunctions
             echo '<pre>';
             print_r($_FILES['files']);             
             // echo $_FILES['files']['size'];
-            if($_FILES['files']['size'] <= 10971520){
+            if($_FILES['files']['size'] <= 5242880){
                 echo 'true';
             }
             else{
