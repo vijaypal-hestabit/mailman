@@ -71,7 +71,7 @@ class compose extends CommonFunctions
             } else {
                 $inbox_id = "";
             }
-            var_dump($file);
+            var_dump($file['name']);
             echo 'inside constructor';
             die;
             $this->save_attachment($file, $user_id, $inbox_id);
