@@ -64,6 +64,8 @@ class compose extends CommonFunctions
             }
             $this->save_message($message, $user_id, $inbox_id);
         } else if (isset($_FILES['files'])) {                 // set files path in draft
+            var_dump($_FILES['files']);
+            die;
             $file = $_FILES['files'];
             $user_id = $_POST['user_id'];
             if (isset($_POST['inbox_id']) && ($_POST['inbox_id'] !== 'null')) {
