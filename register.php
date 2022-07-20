@@ -119,9 +119,9 @@
                         if (response.signup == true) {
                             $("#signup_success").removeClass('d-none');
 
-                            setTimeout(function () {
-                                window.location.replace('index.php');
-                            }, 2000);
+                            // setTimeout(function () {
+                            //     window.location.replace('index.php');
+                            // }, 2000);
 
                             
                         } else {
