@@ -68,7 +68,7 @@
                             <button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>
                         </div>
                         <div class="d-inline">
-                            <button class="btn btn-outline-dark sign_in register_shadow" id="sign_in">Sign-in Instead</button>
+                            <a href="index.php" class="btn btn-outline-dark sign_in register_shadow" id="sign_in">Sign-in Instead</a>
                         </div>
                     </div>
                     <div id="signup_success" class="d-none">

@@ -49,8 +49,12 @@ if (isset($_SESSION['user_id'])) {
             // set image preview
             edit_prifile_pic.onchange = evt => {
                 const [file] = edit_prifile_pic.files
-                if (file) {
-                    show_profile_pic.src = URL.createObjectURL(file)
+                if (file['type'] == 'image/jpg' || file['type'] == 'image/jpeg' || file['type'] == 'image/png') {
+                    if (file) {
+                        show_profile_pic.src = URL.createObjectURL(file)
+                    }
+                } else {
+                    $('#show_profile_pic').prop('src', 'assets/avatar.png');
                 }
             }
 
