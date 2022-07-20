@@ -70,7 +70,9 @@
                         $('#mail_error').removeClass('text-success');
                         $('#mail_error').removeClass('text-warning');
                         $('#mail_error').addClass('text-danger');
-                        $('#mail_error').html("Link generating failed. Please check your username or mailman address.");
+                        setTimeout(function() {
+                            $('#mail_error').html("");
+                        }, 15000);
                     }
 
                     // echo "<h2></h2>";
