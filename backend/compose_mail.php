@@ -72,6 +72,7 @@ class compose extends CommonFunctions
                 $inbox_id = "";
             }
             var_dump($file);
+            echo 'inside constructor';
             die;
             $this->save_attachment($file, $user_id, $inbox_id);
         } else if (isset($data['send_mail'])) {                 // set final submit of mail
@@ -116,6 +117,7 @@ class compose extends CommonFunctions
     function save_attachment($file, $user_id, $inbox_id)
     {
         var_dump($file);
+        echo 'inside save_attachment function';
         die;
         $ob = new ComposeEmailController();
         $dir = '../images/mail_attachments/';
