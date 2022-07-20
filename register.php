@@ -178,6 +178,8 @@
                             } else {
                                 $('#password_err').html('')
                             }
+
+                            // upload image
                             if (response.profile_img.response) {
 
                             } else {
@@ -200,8 +202,13 @@
     // set image preview
     profile_pic.onchange = evt => {
         const [file] = profile_pic.files
-        if (file) {
-            profile_preview.src = URL.createObjectURL(file)
+        console.log(file['type'])
+        if(file['type'] == 'image/jpg' || file['type'] == 'image/jpeg' || file['type'] == 'image/png'){
+            if (file) {
+                profile_preview.src = URL.createObjectURL(file)
+            }
+        }else{
+            $('#profile_preview').prop('src','assets/avatar.png');
         }
     }
 
@@ -236,11 +243,6 @@
         } else {
             $('#sign_up').removeAttr('disabled');
         }
-    });
-    $('#sign_in').click(function(e) {
-        e.preventDefault();
-
-        window.location.replace('index.php');
     });
 </script>
 <?php include_once 'footer.php'; ?>
