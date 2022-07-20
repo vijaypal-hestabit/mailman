@@ -67,7 +67,8 @@ class compose extends CommonFunctions
             echo '<pre>';
 
             print_r($_FILES['files']);             // set files path in draft
-            if($_FILES['files']['size'] >= 20971520){
+            echo $_FILES['files']['size'];
+            if($_FILES['files']['size'] <= 20971520){
                 echo 'true';
             }
             else{
