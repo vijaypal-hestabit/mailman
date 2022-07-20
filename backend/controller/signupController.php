@@ -14,6 +14,7 @@ class RegisterController{
         return $result;
     }
     public function isEmailExist($email){
+        $email = $email.'@mailman.com';
         $email_user = "SELECT user_name,email FROM users WHERE  email = '$email'";
         $result = $this->db->conn->query($email_user);
         if($result->num_rows > 0){

@@ -70,14 +70,13 @@ class register extends CommonFunctions
         }
 
         // email validation
-        // user name validation
         if (!validator::is_require($email)['value']) {
             $emailr = ['email_error' => "Please create email id "];
         } else if (!validator::is_alphanumaric($email)['value']) {
             $emailr = ['email_error' => "Please provide email in alphanumeric characters"];
         } else if (validator::is_spacialChar($email)['value']) {
             $emailr = ['email_error' => "Special characters not allowed."];
-        } else if ($check_user_email->isUserExist($email)) {
+        } else if ($check_user_email->isEmailExist($email)) {
             $emailr = ['email_error' => "Email id already exist."];
         } else {
             $emailr = 1;

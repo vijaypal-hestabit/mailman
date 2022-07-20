@@ -63,11 +63,13 @@
                     <div class="register_item9">
                         <input id="terms" type="checkbox"> I Agree to the <a href="">terms and conditions</a> of MailMan
                     </div>
-                    <div class="register_item9">
-                        <div class="updating_btn">
+                    <div class="register_item9 d-inline">
+                        <div class="updating_btn d-inline">
                             <button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>
                         </div>
-                        <button class="btn btn-outline-dark sign_in register_shadow" id="sign_in">Sign-in Instead</button>
+                        <div class="d-inline">
+                            <button class="btn btn-outline-dark sign_in register_shadow" id="sign_in">Sign-in Instead</button>
+                        </div>
                     </div>
                     <div id="signup_success" class="d-none">
                         <h4>Sign up successuflly.Please <a href="index.php">Login</a> here.</h4>
@@ -127,6 +129,7 @@
                         // register successfully
                         if (response.signup == true) {
                             $("#signup_success").removeClass('d-none');
+                            $('#fname_err, #fname_err, #user_name_err, #email_err, #recovery_email_err, #password_err, #profile_err').html('')
 
                             // setTimeout(function () {
                             //     window.location.replace('index.php');
@@ -134,6 +137,7 @@
 
 
                         } else {
+                            $("#signup_success").addClass('d-none');
                             if (response.fname.fname_error) {
                                 $('#fname_err').html(response.fname.fname_error)
                             } else {
@@ -206,6 +210,7 @@
     $('#terms').attr('disabled', 'disabled');
 
     $('input').keyup(function() {
+        $('#terms').prop('checked', false);
         var f_name = $('#f_name').val();
         var user_name = $('#user_name').val();
         var email = $('#email').val();
@@ -222,6 +227,8 @@
             $('#terms').prop('title', '');
         }
     });
+
+    
     // check terms and condition checked or not
     $('#terms').click(function() {
         if ($(this).prop('checked') == false) {

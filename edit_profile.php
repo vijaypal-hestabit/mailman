@@ -46,6 +46,14 @@ if (isset($_SESSION['user_id'])) {
     <?php include_once 'dashboard_footer.php'; ?>
     <script>
         $(document).ready(function() {
+            // set image preview
+            edit_prifile_pic.onchange = evt => {
+                const [file] = edit_prifile_pic.files
+                if (file) {
+                    show_profile_pic.src = URL.createObjectURL(file)
+                }
+            }
+
             $.ajax({
                 type: "post",
                 url: "backend/edit_profile.php",
