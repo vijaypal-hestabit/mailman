@@ -122,7 +122,6 @@ class compose extends CommonFunctions
 
         $path = $this->saveFiles($dir, $file);
 
-        die;
         $ob->save_attachment($path, $user_id, $inbox_id);
     }
     function send_email($inbox_id, $message, $to_email)
