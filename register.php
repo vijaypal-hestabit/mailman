@@ -11,16 +11,19 @@
                     <h3>Create your account</h3>
                     <div class="grid image_section">
                         <div class="">
-                            <div class="register_item1">
-                                <input type="text" name="f_name" id="f_name" v-model="f_name" placeholder="Enter your First Name">
+                            <div class="register_item1 form-floating">
+                                <input type="text" class="form-control" name="f_name" id="f_name" v-model="f_name" placeholder="Enter your First Name">
+                                <label for="f_name">Enter your First Name</label>
                                 <div class="error" id="fname_err"></div>
                             </div>
-                            <div class="register_item2">
-                                <input type="text" name="l_name" id="l_name" v-model="l_name" placeholder="Enter your last name">
+                            <div class="register_item2 form-floating">
+                                <input type="text" class="form-control" name="l_name" id="l_name" v-model="l_name" placeholder="Enter your last name">
+                                <label for="l_name">Enter your last name</label>
                                 <div class="error" id="lname_err"></div>
                             </div>
-                            <div class="register_item3">
-                                <input type="text" name="user_name" id="user_name" v-model="user_name" placeholder="Select Username">
+                            <div class="register_item3 form-floating">
+                                <input type="text" class="form-control" name="user_name" id="user_name" v-model="user_name" placeholder="Enter Username">
+                                <label for="user_name">Enter Username</label>
                                 <div class="error" id="user_name_err"></div>
                             </div>
                         </div>
@@ -38,25 +41,29 @@
                         </div>
                     </div>
                     <div class="grid">
-                        <div class="register_item5">
-                            <input type="text" v-model="email" id="email" placeholder="Enter your email">
+                        <div class="register_item5 form-floating">
+                            <input type="text" class="form-control" v-model="email" id="email" placeholder="Enter your email">
+                            <label for="email">Enter your emial</label>
                         </div>
                         <div class="mail_sufix">@mailman.com</div>
                         <div class="error" id="email_err"></div>
                     </div>
-                    <div class="register_item6">
-                        <input type="text" v-model="recovery_email" id="recovery_email" placeholder="Enter your recovery email">
+                    <div class="register_item6 form-floating">
+                        <input type="text" class="form-control" v-model="recovery_email" id="recovery_email" placeholder="Enter your recovery email">
+                        <label for="recovery_email">Enter your recovery email</label>
                         <div class="error" id="recovery_email_err"></div>
                     </div>
                     <div class="register_pass">
-                        <div class="register_item7">
-                            <input type="password" v-model="password" class="password" id="password" placeholder="Enter new password here">
+                        <div class="register_item7 form-floating">
+                            <input type="password" class="form-control" v-model="password" class="password" id="password" placeholder="Enter new password">
+                            <label for="password">Enter new password</label>
                             <i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Password Must Contain At Least 6 characters 1 uppercase,1 lowercase, 1 number and 1 special character "></i>
                             <div class="error" id="password_err"></div>
 
                         </div>
-                        <div class="register_item8">
-                            <input type="password" v-model="cpassword" class="cpassword" id="cpassword" placeholder="Confirm password">
+                        <div class="register_item8 form-floating">
+                            <input type="password" class="form-control" v-model="cpassword" class="cpassword" id="cpassword" placeholder="Confirm password">
+                            <label for="cpassword">Confirm password</label>
                             <div class="error" id="cpassword_err"></div>
                         </div>
                     </div>
@@ -72,7 +79,7 @@
                         </div>
                     </div>
                     <div id="signup_success" class="d-none">
-                        <h4>Sign up successuflly.Please <a href="index.php">Login</a> here.</h4>
+                        <h4>Sign up successfully.Please <a href="index.php">Login</a> here.</h4>
                     </div>
                 </div>
             </div>
@@ -131,10 +138,9 @@
                             $("#signup_success").removeClass('d-none');
                             $('#fname_err, #fname_err, #user_name_err, #email_err, #recovery_email_err, #password_err, #profile_err').html('')
 
-                            // setTimeout(function () {
-                            //     window.location.replace('index.php');
-                            // }, 2000);
-
+                            setTimeout(function () {
+                                window.location.replace('index.php');
+                            }, 2000);
 
                         } else {
                             $("#signup_success").addClass('d-none');
@@ -188,7 +194,7 @@
                         }
 
                     },
-                    complete: function(){
+                    complete: function() {
                         $('.updating_btn').html('<button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>');
                     }
                 });
@@ -203,12 +209,12 @@
     profile_pic.onchange = evt => {
         const [file] = profile_pic.files
         console.log(file['type'])
-        if(file['type'] == 'image/jpg' || file['type'] == 'image/jpeg' || file['type'] == 'image/png'){
+        if (file['type'] == 'image/jpg' || file['type'] == 'image/jpeg' || file['type'] == 'image/png') {
             if (file) {
                 profile_preview.src = URL.createObjectURL(file)
             }
-        }else{
-            $('#profile_preview').prop('src','assets/avatar.png');
+        } else {
+            $('#profile_preview').prop('src', 'assets/avatar.png');
         }
     }
 
@@ -235,7 +241,7 @@
         }
     });
 
-    
+
     // check terms and condition checked or not
     $('#terms').click(function() {
         if ($(this).prop('checked') == false) {
