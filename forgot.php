@@ -54,10 +54,6 @@
                     $('#mail_error').removeClass('text-success');
                     $('#mail_error').removeClass('text-danger');
                     $('#mail_error').html("Please wait ...");
-                    setTimeout(function() {
-                        $('#mail_error').html("We are facing some technical issue, Please try after some time.");
-                        $('#mail_error').addClass('text-danger');
-                    }, 15000);
                 },
                 success: function(response) {
 
@@ -71,9 +67,7 @@
                         $('#mail_error').removeClass('text-warning');
                         $('#mail_error').addClass('text-danger');
                         $('#mail_error').html("Link generating failed. Please check your username or mailman address.");
-                        setTimeout(function() {
-                            $('#mail_error').html("");
-                        }, 15000);
+                        
                     }
 
                     // echo "<h2></h2>";
