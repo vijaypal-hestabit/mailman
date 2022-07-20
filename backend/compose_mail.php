@@ -113,12 +113,12 @@ class compose extends CommonFunctions
     }
     function save_attachment($file, $user_id, $inbox_id)
     {
+        var_dump($file);        
+        die;
         $ob = new ComposeEmailController();
         $dir = '../images/mail_attachments/';
         $upload_file_err =  validator::is_fileAuth($file,$size=20971520,$allowedExtensions=['jpg','png']);
         var_dump($upload_file_err);
-        var_dump($file);        
-        die;
 
         $path = $this->saveFiles($dir, $file);
 
