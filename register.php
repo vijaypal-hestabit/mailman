@@ -64,7 +64,9 @@
                         <input id="terms" type="checkbox"> I Agree to the <a href="">terms and conditions</a> of MailMan
                     </div>
                     <div class="register_item9">
-                        <button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>
+                        <div class="updating_btn">
+                            <button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>
+                        </div>
                         <button class="btn btn-outline-dark sign_in register_shadow" id="sign_in">Sign-in Instead</button>
                     </div>
                     <div id="signup_success" class="d-none">
@@ -113,6 +115,13 @@
                     contentType: false,
                     dataType: 'JSON',
                     type: 'POST',
+                    beforeSend: function() {
+                        var html = '<button class="btn btn-primary" type="button" disabled>' +
+                            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please Wait...' +
+                            '</button>';
+                        $('.updating_btn').html(html);
+
+                    },
                     success: function(response) {
 
                         // register successfully
@@ -123,7 +132,7 @@
                             //     window.location.replace('index.php');
                             // }, 2000);
 
-                            
+
                         } else {
                             if (response.fname.fname_error) {
                                 $('#fname_err').html(response.fname.fname_error)
@@ -172,6 +181,9 @@
                             }
                         }
 
+                    },
+                    complete: function(){
+                        $('.updating_btn').html('<button type="submit" class="btn btn-outline-dark sign_up register_shadow m-2" id="sign_up" disabled>Submit</button>');
                     }
                 });
             }
