@@ -101,8 +101,8 @@ class validator
     // file validation
     public static function is_fileAuth($file, $size, $allowedExtensions)
     {
-        var_dump($file);
-        die;
+        // var_dump($file);
+        // die;
         // $allowedExtensions=['jpg','png'];
         $file_size = $file['size'];
         $file_type =  pathinfo($file['name'])['extension'];

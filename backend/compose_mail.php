@@ -65,16 +65,16 @@ class compose extends CommonFunctions
             $this->save_message($message, $user_id, $inbox_id);
         } else if (isset($_FILES['files'])) {  // set files path in draft
             
-            echo '<pre>';
-            print_r($_FILES['files']);             
-            // echo $_FILES['files']['size'];
-            if($_FILES['files']['size'] <= 5242880){
-                echo 'true';
-            }
-            else{
-                echo 'false';
-            }
-            die;
+            // echo '<pre>';
+            // print_r($_FILES['files']);             
+            // // echo $_FILES['files']['size'];
+            // if($_FILES['files']['size'] <= 5242880){
+            //     echo 'true';
+            // }
+            // else{
+            //     echo 'false';
+            // }
+            // die;
             $file = $_FILES['files'];
             $user_id = $_POST['user_id'];
             if (isset($_POST['inbox_id']) && ($_POST['inbox_id'] !== 'null')) {
@@ -82,9 +82,9 @@ class compose extends CommonFunctions
             } else {
                 $inbox_id = "";
             }
-            var_dump($file['name']);
-            echo 'inside constructor';
-            die;
+            // var_dump($file['name']);
+            // echo 'inside constructor';
+            // die;
             $this->save_attachment($file, $user_id, $inbox_id);
         } else if (isset($data['send_mail'])) {                 // set final submit of mail
             if (isset($data['inbox_id'])) {
@@ -127,13 +127,13 @@ class compose extends CommonFunctions
     }
     function save_attachment($file, $user_id, $inbox_id)
     {
-        var_dump($file);
-        echo 'inside save_attachment function';
-        die;
+        // var_dump($file);
+        // echo 'inside save_attachment function';
+        // die;
         $ob = new ComposeEmailController();
         $dir = '../images/mail_attachments/';
         $upload_file_err =  validator::is_fileAuth($file, $size = 20971520, $allowedExtensions = ['jpg', 'png']);
-        var_dump($upload_file_err);
+        // var_dump($upload_file_err);
 
         $path = $this->saveFiles($dir, $file);
 
