@@ -72,6 +72,8 @@ if (isset($_SESSION['user_id'])) {
                     window.location.replace('dashboard.php');
                 } else if (response.login == false) {
                     $('#credential_err').html('Invalid Credentials.');
+                    $('#password_err').html('')
+                    $('#user_err').html('')
                 } else {
 
                     // user name 
