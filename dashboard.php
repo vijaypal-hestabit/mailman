@@ -617,7 +617,7 @@ if (isset($_SESSION['user_id'])) {
         $('#composeModal').on('hidden.bs.modal', function() {
             setTimeout(() => {
                 location.reload()
-            }, 2000);
+            }, 100);
         });
         $(document).on('click', '#sent,#draft,#trash', function() {
             setTimeout(function() {
