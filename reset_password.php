@@ -28,41 +28,51 @@
                 <img class="w-100" src="images/mail.png" alt="mail image">
             </figure>
         </div>
-</form>
+    </form>
 </div>
 
 <?php include_once 'footer.php'; ?>
 <script>
-    $(document).ready(function () {
-        var unique_id = "<?php echo $_GET['unique_id'];?>";
-        var reset_code = "<?php echo $_GET['reset_code'];?>";
+    $(document).ready(function() {
+        var unique_id = "<?php echo $_GET['unique_id']; ?>";
+        var reset_code = "<?php echo $_GET['reset_code']; ?>";
         $.ajax({
             type: "post",
             url: "backend/forget.php",
             data: {
-                "verify_reset_code" : true,
-                'unique_id' : unique_id,
+                "verify_reset_code": true,
+                'unique_id': unique_id,
                 'reset_code': reset_code,
             },
             dataType: "JSON",
-            success: function (response) {
-                if(response['result']){
+            success: function(response) {
+                if (response['result']) {
                     $(".password_expiry_section").remove()
-                }else{
+                } else {
                     $(".forgot_section").remove()
                     $(".password_expiry_section").removeClass('d-none')
                 }
             }
         });
-        $("#change_pass").click(function (e) { 
+        $("#change_pass").click(function(e) {
             e.preventDefault();
             var password = $("#create_password").val();
             var cpassword = $("#create_cpassword").val();
-            $.post("backend/forget.php", {'password':password,'confirm_password':cpassword,'unique_id':unique_id,'update_password': true},
-                function (data, textStatus, jqXHR) {
-                    if(data['result']){
-                        location.href="index.php";
-                    }else{
+            $.post("backend/forget.php", {
+                    'password': password,
+                    'confirm_password': cpassword,
+                    'unique_id': unique_id,
+                    'update_password': true
+                },
+                function(data, textStatus, jqXHR) {
+                    if (data['result']) {
+                        $('.error').html('Password change successfully')
+                        $('.error').addClass('text-success');
+                        setTimeout(function() {
+                            window.location.replace('index.php');
+                        }, 2000);
+
+                    } else {
                         $('.error').html(data['message']);
                     }
                 },
