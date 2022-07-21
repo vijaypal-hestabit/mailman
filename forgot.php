@@ -61,7 +61,7 @@
                         $('#mail_error').addClass('text-success');
                         $('#mail_error').removeClass('text-danger');
                         $('#mail_error').removeClass('text-warning');
-                        $('#mail_error').html("Link generated successfully. Please check your registered backup email address. Check here for <a href='https://mail.google.com/'>check gmail.</a></h2>");
+                        $('#mail_error').html("Link generated successfully. Please check your registered backup email address.</h2>");
                     } else {
                         $('#mail_error').removeClass('text-success');
                         $('#mail_error').removeClass('text-warning');
