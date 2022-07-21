@@ -81,6 +81,7 @@ if (isset($_SESSION['user_id'])) {
                         $('#user_err').html(response.username.username_error)
                     } else {
                         $('#user_err').html('')
+                        $('#credential_err').html('')
                     }
 
                     // password
@@ -88,6 +89,7 @@ if (isset($_SESSION['user_id'])) {
                         $('#password_err').html(response.password.password_error)
                     } else {
                         $('#password_err').html('')
+                        $('#credential_err').html('')
                     }
                 }
             }
