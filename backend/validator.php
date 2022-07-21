@@ -73,7 +73,7 @@ class validator
                 $status = true;
             }
         } elseif (!($password == $cpassword)) {
-            $passwordErr = "Please Check You've Entered Or Confirmed Your Password!";
+            $passwordErr = "Please check, you've entered wrong confirm password!!";
         } else {
             $passwordErr = "Please enter new password";
         }

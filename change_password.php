@@ -59,7 +59,7 @@
                 } else {
 
                     // set error message
-                    if (response.message == 'Please enter old password' || response.message == 'Please enter currect old password') {
+                    if (response.message == 'Please enter old password' || response.message == 'Please enter correct old password') {
                         $('#old_pass_err').html(response.message)
                     } else {
                         $('#old_pass_err').html('')
@@ -69,7 +69,7 @@
                     } else {
                         $('#new_pass_err').html('')
                     }
-                    if (response.message == "Please Check You've Entered Or Confirmed Your Password!") {
+                    if (response.message == "Please check, you've entered wrong confirm password!") {
                         $('#c_pass_err').html(response.message)
                     } else {
                         $('#c_pass_err').html('')
