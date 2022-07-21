@@ -145,20 +145,20 @@ class compose extends CommonFunctions
         if (!$inbox_id_check['value']) {
             echo json_encode([
                 'response' => false,
-                'message' => 'Pls fill the sender mailer address',
+                'message' => 'Please fill the sender mailer address',
                 'variable' => 'email_error'
             ]);
             die;
         } else if (!validator::is_require($to_email)['value']) {
             echo json_encode([
                 'response' => false,
-                'message' => 'Pls fill the sender mailer address'
+                'message' => 'Please fill the sender mailer address'
             ]);
             die;
         } else if (!validator::is_require($message)['value']) {
             echo json_encode([
                 'response' => false,
-                'message' => 'Pls provide valid mail msg'
+                'message' => 'Please enter mail message.'
             ]);
             die;
         } else {
