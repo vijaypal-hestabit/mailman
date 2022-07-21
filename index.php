@@ -23,10 +23,11 @@ if (isset($_SESSION['user_id'])) {
                             <h4>Login successuflly.</h4>
                         </div>
                         <div class="login_content mt-2">
-                            <div class="error" id="user_err"></div>
+                            <div class="error" id="credential_err"></div>
                             <input type="text" name="log_user_name" id="log_user_name" placeholder="Email/username" required>
-                            <div class="error" id="password_err"></div>
+                            <div class="error" id="user_err"></div>
                             <input type="password" name="log_password" class="password" id="log_password" placeholder="Password" required>
+                            <div class="error" id="password_err"></div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div>
                                     <a href="forgot.php">Forgot password?</a>
@@ -70,7 +71,7 @@ if (isset($_SESSION['user_id'])) {
                     $("#login_success").removeClass('d-none');
                     window.location.replace('dashboard.php');
                 } else if (response.login == false) {
-                    $('#user_err').html('Invalid Credentials.');
+                    $('#credential_err').html('Invalid Credentials.');
                 } else {
 
                     // user name 
