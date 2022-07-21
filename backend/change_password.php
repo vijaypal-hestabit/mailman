@@ -54,7 +54,7 @@ class change_password
                 }
 
             }else{
-                $passwordr = array('value' => 0, 'message' => "Please enter currect old password");
+                $passwordr = array('value' => 0, 'message' => "Please enter correct old password");
             }
         }else{
             $passwordr = array('value' => 0, 'message' => "Please enter old password");
