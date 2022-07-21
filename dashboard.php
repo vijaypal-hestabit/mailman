@@ -518,6 +518,8 @@ if (isset($_SESSION['user_id'])) {
                     $("#selectAll").prop('checked', false)
                 },
                 mark_as_read: function(event) {
+                    $("#selectAll").prop('checked',false)
+                    $('.read_status, .unread_status, .delete_status, .restore_status').addClass('d-none');
                     var data = {
                         'selected': this.selected,
                         'mark_read': true,
@@ -533,7 +535,8 @@ if (isset($_SESSION['user_id'])) {
                     })
                 },
                 mark_as_unread: function(event) {
-
+                    $("#selectAll").prop('checked',false)
+                    $('.read_status, .unread_status, .delete_status, .restore_status').addClass('d-none');
                     var data = {
                         'selected': this.selected,
                         'mark_unread': true,
@@ -549,6 +552,8 @@ if (isset($_SESSION['user_id'])) {
                     })
                 },
                 delete_message: function(event) {
+                    $("#selectAll").prop('checked',false)
+                    $('.read_status, .unread_status, .delete_status, .restore_status').addClass('d-none');
                     if (this.page_name == 'Inbox') {
                         var data = {
                             'selected': this.selected,
@@ -574,6 +579,8 @@ if (isset($_SESSION['user_id'])) {
                     })
                 },
                 restore_message: function(event) {
+                    $("#selectAll").prop('checked',false)
+                    $('.read_status, .unread_status, .delete_status, .restore_status').addClass('d-none');
                     if (this.page_name == 'Inbox') {
                         var data = {
                             'selected': this.selected,
