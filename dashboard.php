@@ -80,11 +80,12 @@ if (isset($_SESSION['user_id'])) {
                         <label class="form-control border-0" for="cc">
                             <input type="email" class="form-control" name="" id="cc" placeholder="CC" v-model="cc_mail" @change="save_cc_mail">
                         </label>
-                        <div class="error" id="email_err">{{ cc_email_error }}</div>
+                        <div class="error" id="cc_email_err">{{ cc_email_error }}</div>
 
                         <label class="form-control border-0" for="bcc">
                             <input type="email" class="form-control" name="" id="bcc" placeholder="BCC" v-model="bcc_mail" @change="save_bcc_mail">
                         </label>
+                        <div class="error" id="bcc_email_err">{{ bcc_email_error }}</div>
                         <label class="form-control border-0" for="subject">
                             <input type="text" class="form-control" name="" id="subject" placeholder="Subject" v-model="subject" @change="save_subject">
                         </label>
@@ -98,16 +99,17 @@ if (isset($_SESSION['user_id'])) {
                             </template>
                         </div>
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-7">
                                 <label class="btn btn-link" for="upload_attachments">+ Add Attachments</label>
                                 <input type="file" name="" id="upload_attachments" hidden v-model="attachment" @change="save_attachments">
+                                <div class="error" id="attachment_err">{{ attachment_err }}</div>
                             </div>
-                            <div class="col-4">
-                                <div class="row">
-                                    <div class="col-6 text-right">
+                            <div class="col-5">
+                                <div class="row text-right">
+                                    <div class="col-6 p-0">
                                         <button class="btn btn-hb" data-bs-dismiss="modal">Close</button>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6 text-left">
                                         <button class="btn btn-hb" @click="send_email">Send</button>
                                     </div>
                                 </div>
@@ -143,7 +145,8 @@ if (isset($_SESSION['user_id'])) {
                     page_name: "",
                     read_status: "",
                     selected: null,
-                    attch_list: null
+                    attch_list: null,
+                    attachment_err: ""
                 }
             },
             methods: {
@@ -225,7 +228,7 @@ if (isset($_SESSION['user_id'])) {
                             this.inbox_id = res['data']['inbox_id']
                         }
                         if (!res['data']['response']) {
-                            this[res['data']['variable']] = res['data']['message']
+                            this.cc_email_error = res['data']['message']
                         }
                     })
                 },
@@ -242,7 +245,7 @@ if (isset($_SESSION['user_id'])) {
                             this.inbox_id = res['data']['inbox_id']
                         }
                         if (!res['data']['response']) {
-                            this.email_error = res['data']['message']
+                            this.bcc_email_error = res['data']['message']
                         }
                     })
                 },
@@ -283,23 +286,29 @@ if (isset($_SESSION['user_id'])) {
                 save_attachments: function(event) {
                     var formData = new FormData();
                     var imagefile = document.querySelector('#upload_attachments');
-                    formData.append("files", imagefile.files[0]);
-                    formData.append('inbox_id', this.inbox_id)
-                    formData.append('user_id', '<?php echo $_SESSION['id']; ?>')
-                    axios.post('backend/compose_mail.php', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    }).then(res => {
-                        if (res['data']['inbox_id']) {
-                            this.inbox_id = res['data']['inbox_id']
-                            this.attch_list = res['data']['attachments']
-                        }
-                        if (!res['data']['response']) {
-                            this.attch_list = res['data']['attahcments']
-                            this.email_error = res['data']['message']
-                        }
-                    })
+
+                    if (imagefile.files[0].size > 20971520) {
+                        this.attachment_err = 'File should not be greater than 20MB';
+                    }else{
+                        this.attachment_err = '';
+                        formData.append("files", imagefile.files[0]);
+                        formData.append('inbox_id', this.inbox_id)
+                        formData.append('user_id', '<?php echo $_SESSION['id']; ?>')
+                        axios.post('backend/compose_mail.php', formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(res => {
+                            if (res['data']['inbox_id']) {
+                                this.inbox_id = res['data']['inbox_id']
+                                this.attch_list = res['data']['attachments']
+                            }
+                            if (!res['data']['response']) {
+                                this.attch_list = res['data']['attahcments']
+                                this.email_error = res['data']['message']
+                            }
+                        })
+                    }
                 },
                 search: function(e) {
                     // alert($("#search").val())
@@ -616,7 +625,7 @@ if (isset($_SESSION['user_id'])) {
                 $('.mail_content').css({
                     'font-weight': 'normal'
                 })
-            }, 100);
+            }, 300);
         });
     </script>
 
