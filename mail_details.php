@@ -2,8 +2,18 @@
 session_start();
 if (isset($_SESSION['user_id'])) {
     include_once 'dashboard_header.php';
-    include_once 'dashboard_header_sidebar.php';
+    // include_once 'dashboard_header_sidebar.php';
 ?>
+
+    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky">
+            <ul class="nav flex-column">
+                <li class="compose">
+                    <a href="dashboard.php" class="btn btn-hb">Back to dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <!-- show mail details -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
         <div id="show_mail">

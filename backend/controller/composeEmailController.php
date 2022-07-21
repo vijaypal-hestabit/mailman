@@ -24,7 +24,7 @@ class ComposeEmailController
             $data = $res->fetch_assoc();
             $receiver_id = $data['id'];
             if ($inbox_id == '') {
-                $sql = "INSERT INTO `inbox`(`receiver_id`, `short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ($receiver_id,'',$sender_id,1,'')";
+                $sql = "INSERT INTO `inbox`(`receiver_id`, `short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ($receiver_id,'no subject',$sender_id,1,'')";
                 $result = $this->conn->query($sql);
                 $last_id = $this->conn->insert_id;
                 echo json_encode(['inbox_id' => $last_id]);
@@ -123,6 +123,9 @@ class ComposeEmailController
     public function save_subject($subject, $user_id, $inbox_id)
     {
         $subject =  $this->conn->real_escape_string($subject);
+        if ($subject == '') {
+            $subject = 'no subject';
+        }
         $sender_id = $this->conn->real_escape_string($user_id);
         if ($inbox_id == '') {
             $sql = "INSERT INTO `inbox`(`short_subject_msg`, `sender_id`,  `draft_status`, `full_message`) VALUES ('$subject',$sender_id,1,'')";
