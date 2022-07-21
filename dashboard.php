@@ -152,7 +152,7 @@ if (isset($_SESSION['user_id'])) {
             },
             methods: {
                 navigate: function(id) {
-                    if (this.page_name == 'Inbox' || this.page_name == 'Sent') {
+                    if (this.page_name == 'Inbox' || this.page_name == 'Sent' || this.page_name == 'Trash') {
                         location.href = "mail_details.php?id=" + id
                     } else if (this.page_name == 'Draft') {
                         var data = {
@@ -391,9 +391,7 @@ if (isset($_SESSION['user_id'])) {
                     }
                     this.inbox_contents = []
                     $('#inbox_table').DataTable().clear().destroy();
-                    this.$nextTick(function() {
-                        this.refresh(data)
-                    })
+                    this.refresh(data)
                     this.hidebtns();
                 },
                 refresh: function(data) {
