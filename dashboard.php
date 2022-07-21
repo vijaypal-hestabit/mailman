@@ -598,7 +598,7 @@ if (isset($_SESSION['user_id'])) {
                     }
                     axios.post('backend/dashboard_actions.php', data).then(res => {
                         var data = {
-                            'page': 'Trash'
+                            'page': (this.page_name).toLowerCase()
                         }
                         this.inbox_contents = []
                         $('#inbox_table').DataTable().clear().destroy();
