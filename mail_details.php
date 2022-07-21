@@ -45,7 +45,7 @@ if (isset($_SESSION['user_id'])) {
             <!-- reply buttons -->
             <div class="mt-4">
                 <button class="btn btn-hb mr-2" id="reply" @click="reply">Reply</button>
-                <button class="btn btn-hb" id="replyall">Reply all</button>
+                <!-- <button class="btn btn-hb" id="replyall">Reply all</button> -->
             </div>
         </div>
     </main>
