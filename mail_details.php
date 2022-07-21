@@ -2,18 +2,8 @@
 session_start();
 if (isset($_SESSION['user_id'])) {
     include_once 'dashboard_header.php';
-    // include_once 'dashboard_header_sidebar.php';
+    include_once 'dashboard_header_sidebar.php';
 ?>
-
-    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky">
-            <ul class="nav flex-column">
-                <li class="compose">
-                    <a href="dashboard.php" class="btn btn-hb">Back to dashboard</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <!-- show mail details -->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
         <div id="show_mail">
@@ -243,7 +233,12 @@ if (isset($_SESSION['user_id'])) {
                 axios.post('backend/compose_mail.php', data).then(res => {
                     if (res['data'] == true) {
                         // $('#composeModal').modal('hide');
-                        alert('email_sent')
+                        $('#composeModal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Mail sent successfully',
+                            showConfirmButton: false,
+                        })
                     } else {
                         $('#message_error').html(res['data']['message']);
                     }
@@ -650,6 +645,8 @@ if (isset($_SESSION['user_id'])) {
 
     // hide compose moldal
     $('#composeModal').on('hidden.bs.modal', function() {
-        location.reload()
+        setTimeout(() => {
+            location.reload()
+        }, 100);
     });
 </script>
