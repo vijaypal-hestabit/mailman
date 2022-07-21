@@ -306,6 +306,8 @@ if (isset($_SESSION['user_id'])) {
                     $("#inbox_table").DataTable().search($("#search").val()).draw();
                 },
                 open_sent: function(event) {
+
+
                     this.page_name = "Sent"
                     $(".status").removeClass('disabled')
                     $(".status").removeClass('active')
@@ -399,8 +401,8 @@ if (isset($_SESSION['user_id'])) {
 
                     var data_rows = $('tr[data_id]').length;
                     if (data_rows == 0) {
-                        $("#selectAll").prop('checked',false)
-                        $("#selectAll").prop('title','No data available')
+                        $("#selectAll").prop('checked', false)
+                        $("#selectAll").prop('title', 'No data available')
                         this.hidebtns();
                     }
 
@@ -464,7 +466,7 @@ if (isset($_SESSION['user_id'])) {
                 },
                 single_select: function(event) {
 
-                    
+
                     var checked_all_array = [];
 
                     $("input[name=action]:checked").each(function() {
@@ -474,9 +476,9 @@ if (isset($_SESSION['user_id'])) {
                     // select all selector checkbox if all single selector checked
                     var rows = $('tr[data_id]').length;
                     if (checked_all_array.length == rows) {
-                        $("#selectAll").prop('checked',true)
-                    }else{
-                        $("#selectAll").prop('checked',false)
+                        $("#selectAll").prop('checked', true)
+                    } else {
+                        $("#selectAll").prop('checked', false)
                     }
 
 
@@ -599,7 +601,7 @@ if (isset($_SESSION['user_id'])) {
             },
         })
 
-
+        // jquery
         $(document).on("click", "td", function() {
             var message_id = $(this).closest('tr').attr('data_id');
         });
@@ -607,6 +609,14 @@ if (isset($_SESSION['user_id'])) {
             setTimeout(() => {
                 location.reload()
             }, 2000);
+        });
+        $(document).on('click', '#sent,#draft,#trash', function() {
+            setTimeout(function() {
+                $('.mail_content').addClass('read');
+                $('.mail_content').css({
+                    'font-weight': 'normal'
+                })
+            }, 100);
         });
     </script>
 

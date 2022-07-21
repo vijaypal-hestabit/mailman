@@ -52,8 +52,10 @@ class ResetPasswordController{
             return false;
         }
     }
+
+    // change passowrd from gmail link
     function change_password($email,$password){
-        // $password=$this->db->conn->real_escape_string($password);
+        $password = md5($password);
         $sql = "UPDATE users set password='$password' where email='$email' or user_name = '$email'";
         $res = $this->db->conn->query($sql);
         if($res){
@@ -69,8 +71,10 @@ class ResetPasswordController{
             ]);
         }
     }
+
+    // change passowrd from dashboard
     function change_password_dash($email,$password){
-        // $password=$this->db->conn->real_escape_string($password);
+        $password = md5($password);
         $sql = "UPDATE users set password='$password' where email='$email' or user_name = '$email'";
         $res = $this->db->conn->query($sql);
         if($res){

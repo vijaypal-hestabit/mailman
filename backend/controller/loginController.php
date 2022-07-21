@@ -11,6 +11,7 @@ class LoginController
 
     public function login($user_name, $password)
     {
+        $password = md5($password);
         $register_query = "SELECT first_name,id,user_name,email,profile_pic,password FROM users WHERE (user_name = '$user_name' or email = '$user_name') and password ='$password'";
         $query = $this->db->conn->query($register_query);
         $result = mysqli_num_rows($query);

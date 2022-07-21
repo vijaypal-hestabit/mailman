@@ -32,6 +32,7 @@ class change_password
 
         // password validation
         if ($oldpassword) {
+            $oldpassword = md5($oldpassword);
             if ($fetchPass == $oldpassword) {
 
               

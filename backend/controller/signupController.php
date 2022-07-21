@@ -9,6 +9,7 @@ class RegisterController{
 
     public function registration($first_name,$last_name,$user_name,$email,$profile_pic,$password,$backup_mail){
         $date = date("Y-m-d H:i:s"); 
+        $password = md5($password);
         $register_query = "INSERT INTO users(first_name,last_name,user_name,email,profile_pic,password,backup_mail,date) values('$first_name','$last_name','$user_name','$email','$profile_pic','$password','$backup_mail','$date')";
         $result = $this->db->conn->query($register_query);
         return $result;
