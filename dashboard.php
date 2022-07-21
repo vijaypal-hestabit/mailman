@@ -91,7 +91,7 @@ if (isset($_SESSION['user_id'])) {
                         </label>
                         <label for="msg_body" class="form-control border-0  ">
                             <textarea class="form-control" name="" id="msg_body" cols="30" rows="10" placeholder="Message Body" v-model="message" @change="save_message"></textarea>
-                            <div class="error" id="message_error"></div>
+                            <div class="error" id="message_error">{{ message_error }}</div>
                         </label>
                         <div class="attachments w-100 d-grid">
                             <template v-for="(item,index) in attch_list">
@@ -138,6 +138,7 @@ if (isset($_SESSION['user_id'])) {
                     attachment: "",
                     inbox_id: null,
                     email_error: "",
+                    message_error: "",
                     cc_email_error: "",
                     bcc_email_error: "",
                     inbox_contents: null,
@@ -279,7 +280,7 @@ if (isset($_SESSION['user_id'])) {
                             this.inbox_id = res['data']['inbox_id']
                         }
                         if (!res['data']['response']) {
-                            this.email_error = res['data']['message']
+                            this.message_error = res['data']['message']
                         }
                     })
                 },
@@ -625,7 +626,7 @@ if (isset($_SESSION['user_id'])) {
                 $('.mail_content').css({
                     'font-weight': 'normal'
                 })
-            }, 300);
+            },500);
         });
     </script>
 
