@@ -391,7 +391,9 @@ if (isset($_SESSION['user_id'])) {
                     }
                     this.inbox_contents = []
                     $('#inbox_table').DataTable().clear().destroy();
-                    this.refresh(data)
+                    this.$nextTick(function() {
+                        this.refresh(data)
+                    })
                     this.hidebtns();
                 },
                 refresh: function(data) {
