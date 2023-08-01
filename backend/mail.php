@@ -63,12 +63,12 @@ function send_mail($msg, $subject, $reciver_email, $reciverName)
     //Fill in authentication details here
     //Either the gmail account owner, or the user that gave consent
     $email = 'vijaypal.hestabit@gmail.com';
-    $clientId = '767536814596-e0c5lcbgke5mvkn56bkfp5htn9s21nq0.apps.googleusercontent.com';
-    $clientSecret = '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';
+    $clientId = '31743804146-5cc17hudabhsa6is9m0sfpk9cmpaiibm.apps.googleusercontent.com';
+    $clientSecret = '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';
 
     //Obtained by configuring and running get_oauth_token.php
     //after setting up an app in Google Developer Console.
-    $refreshToken = '1//0gMnwc6Y6ZC_tCgYIARAAGBASNwF-L9Ir862fQDeT4_3qnZaNZ8JES3GZ5uMRC7i03kjxa5oaruqjFDra1IPGWziYAQdrhfa9uGg';
+    $refreshToken = '1//0gPVDK0Cjx3euCgYIARAAGBASNwF-L9IrKpZmPQbYPm34pTrShvbodu6z_pZi5Wcd_a84mU5RMCty5IUY4r745zkZVSwcmQfSMK4';
 
     //Create a new OAuth2 provider instance
     $provider = new Google(

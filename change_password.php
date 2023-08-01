@@ -76,25 +76,25 @@
                     }
 
                     if (response.message == "Your Password Must contain one upper case character!") {
-                        $('#c_pass_err').html(response.message)
+                        $('#new_pass_err').html(response.message)
                     } else {
-                        $('#c_pass_err').html('')
+                        $('#new_pass_err').html('')
                     }
 
                     if (response.message == "Your Password Must Contain At Least 6 Characters!") {
-                        $('#c_pass_err').html(response.message)
+                        $('#new_pass_err').html('response.message')
                     } else {
-                        $('#c_pass_err').html('')
+                        $('#new_pass_err').html('')
                     }
                     if (response.message == "Your Password Must contain a number!") {
-                        $('#c_pass_err').html(response.message)
+                        $('#new_pass_err').html(response.message)
                     } else {
-                        $('#c_pass_err').html('')
+                        $('#new_pass_err').html('')
                     }
                     if (response.message == "Your Password Must contain a special character!") {
-                        $('#c_pass_err').html(response.message)
+                        $('#new_pass_err').html(response.message)
                     } else {
-                        $('#c_pass_err').html('')
+                        $('#new_pass_err').html('')
                     }
 
                 }

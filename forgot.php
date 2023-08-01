@@ -57,6 +57,8 @@
                 },
                 success: function(response) {
 
+                    console.log('response ===>>>> ', response)
+
                     if (response['status']) {
                         $('#mail_error').addClass('text-success');
                         $('#mail_error').removeClass('text-danger');
